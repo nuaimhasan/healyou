@@ -10,24 +10,15 @@ const ContactSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    mapLink: {
-      type: String,
-    },
     email: {
       type: String,
       required: true,
     },
-    primaryPhone: {
+    phone: {
       type: String,
       required: true,
     },
-    secondaryPhone: {
-      type: String,
-    },
-    fax: {
-      type: String,
-      required: true,
-    },
+
     address: {
       type: String,
       required: true,
@@ -35,10 +26,7 @@ const ContactSchema = new mongoose.Schema(
     facebookLink: {
       type: String,
     },
-    instagramLink: {
-      type: String,
-    },
-    youtubeLink: {
+    twitterLink: {
       type: String,
     },
     linkedinLink: {

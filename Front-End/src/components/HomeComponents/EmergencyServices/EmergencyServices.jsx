@@ -1,4 +1,9 @@
+import { useGetContactsQuery } from "../../../Redux/contact/contactApi";
+
 export default function EmergencyServices() {
+  const { data: contactData } = useGetContactsQuery();
+  const contact = contactData?.data[0];
+
   return (
     <section>
       <div className="relative">
@@ -17,7 +22,7 @@ export default function EmergencyServices() {
           <img src="/images/One-Call.png" alt="" className="w-40" />
 
           <h3 className="text-2xl text-neutral font-semibold">
-            Call: 01000-000000
+            Call: {contact?.phone}
           </h3>
         </div>
       </div>

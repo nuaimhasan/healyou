@@ -4,10 +4,13 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import ProductDropdown from "./ProductDropdown";
+import ServiceDropdown from "./ServiceDropdown";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 export default function Header() {
   const [mobileMenu, setmobileMenu] = useState(false);
   const [productsDropdown, setProductsDropdown] = useState(false);
+  const [serviceDropdown, setServiceDropdown] = useState(false);
 
   const { data } = useGetLogosQuery();
 
@@ -15,6 +18,7 @@ export default function Header() {
     window.addEventListener("click", (e) => {
       if (
         e.target.closest(".menu_wrap ul li a") &&
+        !e.target.closest(".menu_btn") &&
         !e.target.closest(".menu_wrap ul li a svg")
       ) {
         setmobileMenu(false);
@@ -22,6 +26,10 @@ export default function Header() {
 
       if (!e.target.closest(".products_btn")) {
         setProductsDropdown(false);
+      }
+
+      if (!e.target.closest(".services_btn")) {
+        setServiceDropdown(false);
       }
     });
   }, []);
@@ -42,9 +50,11 @@ export default function Header() {
 
           <nav className="menu_wrap flex items-center gap-2">
             <button
-              onClick={() => setmobileMenu(false)}
-              className={`overlay 2xl:hidden ${mobileMenu && "overlay_show"}`}
-            ></button>
+              onClick={() => setmobileMenu(!mobileMenu)}
+              className="min-[800px]:hidden menu_btn"
+            >
+              <HiOutlineMenuAlt3 className="text-2xl" />
+            </button>
 
             <ul className={`${mobileMenu && "show"}`}>
               <li>
@@ -54,13 +64,13 @@ export default function Header() {
               <li>
                 <Link
                   to="/services"
-                  className="products_btn"
-                  onClick={() => setProductsDropdown(!productsDropdown)}
+                  className="services_btn"
+                  onClick={() => setServiceDropdown(!setServiceDropdown)}
                 >
                   Services <MdKeyboardArrowDown />
                 </Link>
 
-                <ProductDropdown productsDropdown={productsDropdown} />
+                <ServiceDropdown serviceDropdown={serviceDropdown} />
               </li>
 
               <li>

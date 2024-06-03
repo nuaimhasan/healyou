@@ -70,19 +70,6 @@ export default function Products() {
 
   return (
     <section>
-      <div className="relative">
-        <img
-          src="https://sunshinecares.in/images/nch.jpg"
-          alt=""
-          className="w-full h-28 md:h-60"
-        />
-        <div className="container">
-          <h2 className="absolute top-1/2 -translate-y-1/2 text-3xl text-base-100 font-semibold">
-            {params?.category ? params?.category : "Healyou Products"}
-          </h2>
-        </div>
-      </div>
-
       <div className="container py-10">{content}</div>
 
       {data?.data?.length > 0 && (

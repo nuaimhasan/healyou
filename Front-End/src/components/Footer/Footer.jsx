@@ -4,12 +4,14 @@ import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMail, MdOutlineLocationOn } from "react-icons/md";
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
+import { useGetServicesQuery } from "../../Redux/service/service";
 
 export default function Footer() {
   const { data: logos } = useGetLogosQuery();
   const logo = logos?.data[0];
   const { data: contactData } = useGetContactsQuery();
   const contact = contactData?.data[0];
+  const { data: services } = useGetServicesQuery();
 
   return (
     <footer className="bg-accent pt-10 pb-5">
@@ -42,16 +44,16 @@ export default function Footer() {
           <div>
             <h2 className="text-gray-300 text-xl font-medium">Services</h2>
             <ul className="text-gray-400 font-light mt-2 flex flex-col gap-1.5 text-[15px]">
-              <li>
-                <Link to="/about-us" className="hover:underline">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact-us" className="hover:underline">
-                  Contact Us
-                </Link>
-              </li>
+              {services?.data?.map((service) => (
+                <li key={service?._id}>
+                  <Link
+                    to={`/service/${service?._id}`}
+                    className="hover:underline"
+                  >
+                    {service?.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -61,7 +63,7 @@ export default function Footer() {
               <li>
                 <p className="flex items-center gap-1.5">
                   <BsTelephone />
-                  {contact?.primaryPhone}
+                  {contact?.phone}
                 </p>
               </li>
               <li>

@@ -80,29 +80,21 @@ const ContactUs = () => {
   const hanldeAddUpdate = async (e) => {
     e.preventDefault();
 
-    const mapLink = e.target.mapLink.value;
     const email = e.target.email.value;
-    const primaryPhone = e.target.primaryPhone.value;
-    const secondaryPhone = e.target.secondaryPhone.value;
-    const fax = e.target.fax.value;
+    const phone = e.target.phone.value;
     const address = e.target.address.value;
     const facebookLink = e.target.facebookLink.value;
-    const instagramLink = e.target.instagramLink.value;
-    const youtubeLink = e.target.youtubeLink.value;
+    const twitterLink = e.target.twitterLink.value;
     const linkedinLink = e.target.linkedinLink.value;
 
     const formData = new FormData();
     formData.append("image", images[0]?.file);
     formData.append("banner", banner[0]?.file);
-    formData.append("mapLink", mapLink);
     formData.append("email", email);
-    formData.append("primaryPhone", primaryPhone);
-    formData.append("secondaryPhone", secondaryPhone);
-    formData.append("fax", fax);
+    formData.append("phone", phone);
     formData.append("address", address);
     formData.append("facebookLink", facebookLink);
-    formData.append("instagramLink", instagramLink);
-    formData.append("youtubeLink", youtubeLink);
+    formData.append("twitterLink", twitterLink);
     formData.append("linkedinLink", linkedinLink);
 
     if (id) {
@@ -121,15 +113,6 @@ const ContactUs = () => {
       <form className="p-4" onSubmit={hanldeAddUpdate}>
         <div className="text-neutral-content grid sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
           <div>
-            <p className="mb-1">Map Link</p>
-            <input
-              type="text"
-              name="mapLink"
-              required
-              defaultValue={contactUs?.mapLink}
-            />
-          </div>
-          <div>
             <p className="mb-1">Email</p>
             <input
               type="email"
@@ -139,31 +122,15 @@ const ContactUs = () => {
             />
           </div>
           <div>
-            <p className="mb-1">Primary Phone</p>
+            <p className="mb-1">Phone</p>
             <input
               type="tel"
-              name="primaryPhone"
+              name="phone"
               required
-              defaultValue={contactUs?.primaryPhone}
+              defaultValue={contactUs?.phone}
             />
           </div>
-          <div>
-            <p className="mb-1">Secondary Phone</p>
-            <input
-              type="tel"
-              name="secondaryPhone"
-              defaultValue={contactUs?.secondaryPhone}
-            />
-          </div>
-          <div>
-            <p className="mb-1">Fax</p>
-            <input
-              type="text"
-              name="fax"
-              required
-              defaultValue={contactUs?.fax}
-            />
-          </div>
+
           <div>
             <p className="mb-1">Address</p>
             <input
@@ -173,6 +140,7 @@ const ContactUs = () => {
               defaultValue={contactUs?.address}
             />
           </div>
+
           <div>
             <p className="mb-1">Facebook Link</p>
             <input
@@ -182,21 +150,14 @@ const ContactUs = () => {
             />
           </div>
           <div>
-            <p className="mb-1">Instagram Link</p>
+            <p className="mb-1">Twitter Link</p>
             <input
               type="text"
-              name="instagramLink"
-              defaultValue={contactUs?.instagramLink}
+              name="twitterLink"
+              defaultValue={contactUs?.twitterLink}
             />
           </div>
-          <div>
-            <p className="mb-1">Youtube Link</p>
-            <input
-              type="text"
-              name="youtubeLink"
-              defaultValue={contactUs?.youtubeLink}
-            />
-          </div>
+
           <div>
             <p className="mb-1">LinkedIn Link</p>
             <input

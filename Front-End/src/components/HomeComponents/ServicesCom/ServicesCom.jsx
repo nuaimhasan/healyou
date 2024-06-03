@@ -1,6 +1,11 @@
+import { useGetServicesQuery } from "../../../Redux/service/service";
 import ServiceCard from "../../ServiceCard/ServiceCard";
 
 export default function ServicesCom() {
+  const { data, isLoading } = useGetServicesQuery();
+  if (isLoading) return "Loading...";
+  const services = data?.data;
+
   return (
     <section className="py-8 sm:py-10">
       <div className="container">
@@ -12,7 +17,9 @@ export default function ServicesCom() {
 
         <div className="mt-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <ServiceCard />
+            {services?.map((service) => (
+              <ServiceCard key={service?._id} service={service} />
+            ))}
           </div>
         </div>
       </div>

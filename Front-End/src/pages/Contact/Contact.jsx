@@ -1,9 +1,5 @@
 import { BsTelephone } from "react-icons/bs";
-import {
-  MdOutlineLocationOn,
-  MdOutlineFax,
-  MdOutlineMailOutline,
-} from "react-icons/md";
+import { MdOutlineLocationOn, MdOutlineMailOutline } from "react-icons/md";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
 import Spinner from "../../components/Spinner/Spinner";
 
@@ -12,8 +8,6 @@ export default function Contact() {
   const { data: contactData, isLoading } = useGetContactsQuery();
   const contact = contactData?.data[0];
   if (isLoading) return <Spinner />;
-
-  console.log(contact);
 
   return (
     <section>
@@ -27,7 +21,7 @@ export default function Contact() {
         />
       </div>
 
-      <div className="container">
+      <div className="container py-10">
         <div className="grid lg:grid-cols-2 gap-4 items-center">
           <div className="lg:w-[80%] mx-auto">
             <img
@@ -35,7 +29,7 @@ export default function Contact() {
                 contact?.image
               }`}
               alt=""
-              className="w-full"
+              className="md:w-[75%] mx-auto"
             />
           </div>
           <div>
@@ -49,9 +43,7 @@ export default function Contact() {
                   Phone
                 </h2>
                 <div className="mt-3 text-neutral-content">
-                  <p>
-                    {contact?.primaryPhone} <br /> {contact?.secondaryPhone}
-                  </p>
+                  <p>{contact?.phone}</p>
                 </div>
               </div>
 
@@ -70,17 +62,6 @@ export default function Contact() {
 
               <div className="shadow text-center rounded pb-8 mt-8">
                 <div className="-mt-6 w-14 h-14 mx-auto rounded-full shadow flex justify-center items-center bg-base-100">
-                  <MdOutlineFax className="text-3xl text-secondary" />
-                </div>
-
-                <h2 className="text-xl font-semibold mt-4 text-neutral">Fax</h2>
-                <div className="mt-3 text-neutral-content">
-                  <p>{contact?.fax}</p>
-                </div>
-              </div>
-
-              <div className="shadow text-center rounded pb-8 mt-8">
-                <div className="-mt-6 w-14 h-14 mx-auto rounded-full shadow flex justify-center items-center bg-base-100">
                   <MdOutlineMailOutline className="text-3xl text-secondary" />
                 </div>
 
@@ -94,17 +75,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="mt-10">
-        <iframe
-          src={contact?.mapLink}
-          width="100%"
-          height="450"
-          allowfullscreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
       </div>
     </section>
   );
