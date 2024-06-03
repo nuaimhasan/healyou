@@ -1,51 +1,54 @@
 import { useEffect, useState } from "react";
 
 import { AiFillDelete } from "react-icons/ai";
+
 import ImageUploading from "react-images-uploading";
 import swal from "sweetalert2";
+
 import {
-  useAddLogoMutation,
-  useGetLogosQuery,
-  useUpdateLogoMutation,
-} from "../../../Redux/logo/logoApi";
+  useAddMutation,
+  useGetfaviconQuery,
+  useUpdateMutation,
+} from "../../../Redux/favicon/faviconApi";
 
 export default function Favicon() {
   const [images, setImages] = useState([]);
 
-  const { data } = useGetLogosQuery();
-  const logo = data?.data[0];
-  const id = logo?._id;
+  const { data } = useGetfaviconQuery();
+  const favicon = data?.data[0];
+  const id = favicon?._id;
 
   const [
-    addLogo,
+    add,
     {
       isLoading: addLoading,
       isError: addIsError,
       error: addError,
       isSuccess: addSuccess,
     },
-  ] = useAddLogoMutation();
+  ] = useAddMutation();
 
   const [
-    updateLogo,
+    update,
     {
       isLoading: updateLoading,
       isError: updateIsError,
       error: updateError,
       isSuccess: updateSuccess,
     },
-  ] = useUpdateLogoMutation();
+  ] = useUpdateMutation();
 
   const handleAddBanner = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("logo", images[0]?.file);
+    formData.append("icon", images[0]?.file);
 
     if (id) {
-      await updateLogo({ id, formData });
+      await update({ id, formData });
     } else {
-      await addLogo(formData);
+      const res = await add(formData);
+      console.log(res);
     }
   };
 
@@ -71,12 +74,12 @@ export default function Favicon() {
 
     if (addSuccess) {
       setImages([]);
-      swal.fire("", "Logo added successfully", "success");
+      swal.fire("", "Favicon added successfully", "success");
       return;
     }
     if (updateSuccess) {
       setImages([]);
-      swal.fire("", "Logo updated successfully", "success");
+      swal.fire("", "Favicon updated successfully", "success");
       return;
     }
   }, [
@@ -143,7 +146,7 @@ export default function Favicon() {
         </div>
         <div className="mt-4">
           <img
-            src={`${import.meta.env.VITE_BACKEND_URL}/logo/${logo?.logo}`}
+            src={`${import.meta.env.VITE_BACKEND_URL}/favicon/${favicon?.icon}`}
             alt=""
             className="w-32"
           />
@@ -154,9 +157,9 @@ export default function Favicon() {
             <button disabled={addLoading && "disabled"} className="primary_btn">
               {addLoading || updateLoading
                 ? "Loading..."
-                : logo?._id
-                ? "Update Logo"
-                : "Add Logo"}
+                : favicon?._id
+                ? "Update Favicon"
+                : "Add Favicon"}
             </button>
           </div>
         </div>

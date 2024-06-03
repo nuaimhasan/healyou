@@ -18,6 +18,7 @@ const aboutRouter = require("./routes/aboutRoutes");
 const bannerRouter = require("./routes/bannerRoutes");
 const contactRouter = require("./routes/contactRoutes");
 
+const faviconRouter = require("./routes/faviconRoutes");
 const logoRouter = require("./routes/logoRoutes");
 
 const themeRouter = require("./routes/themeRoutes");
@@ -39,9 +40,11 @@ app.use("/services", serviceRouter);
 app.use("/products", productRouter);
 
 app.use("/about", aboutRouter);
-app.use("/banner", bannerRouter);
-app.use("/logo", logoRouter);
 app.use("/contact", contactRouter);
+
+app.use("/favicon", faviconRouter);
+app.use("/logo", logoRouter);
+app.use("/banner", bannerRouter);
 
 app.use("/categories", categoryRouter);
 app.use("/sub-categories", subCategoryRouter);

@@ -47,8 +47,9 @@ const ProductsList = () => {
   if (!isError && isSuccess) {
     content = (
       <tbody>
-        {products?.map((product) => (
+        {products?.map((product, i) => (
           <tr key={product?._id}>
+            <td>{i + 1}</td>
             <td>{product?.title}</td>
             <td>
               <img
@@ -56,7 +57,7 @@ const ProductsList = () => {
                   product?.image
                 }`}
                 alt={product?.image}
-                className="w-28 h-14"
+                className="w-14 h-8 rounded"
               />
             </td>
             <td>{product?.category?.name}</td>
@@ -93,6 +94,7 @@ const ProductsList = () => {
         <table>
           <thead>
             <tr>
+              <th>SL</th>
               <th>Title</th>
               <th>Image</th>
               <th>Category</th>

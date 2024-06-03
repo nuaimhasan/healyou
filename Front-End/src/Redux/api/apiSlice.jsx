@@ -36,5 +36,6 @@ export const apiSlice = createApi({
     "news-category",
     "admin",
     "themes",
+    "favicon",
   ],
 });

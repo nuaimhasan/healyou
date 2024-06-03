@@ -113,12 +113,6 @@ export default function DashboardSidebar() {
           </ul>
         </nav>
       </div>
-      <div className="bg-accent p-2 flex justify-between items-center font-light">
-        <p>Visit Front-End</p>
-        <Link to="/" target="_blank" className="text-primary hover:underline">
-          Business
-        </Link>
-      </div>
     </div>
   );
 }
