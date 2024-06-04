@@ -13,6 +13,8 @@ const subCategoryRouter = require("./routes/subCategoriesRoute");
 const subSubCategoryRouter = require("./routes/subSubCategoriesRoute");
 
 const productRouter = require("./routes/productRoutes");
+const orderRouter = require("./routes/orderRoutes");
+const rentRouter = require("./routes/rentRoutes");
 
 const aboutRouter = require("./routes/aboutRoutes");
 const bannerRouter = require("./routes/bannerRoutes");
@@ -38,6 +40,8 @@ mongoose.connect(process.env.DB_URL).then(() => {
 
 app.use("/services", serviceRouter);
 app.use("/products", productRouter);
+app.use("/order", orderRouter);
+app.use("/rent", rentRouter);
 
 app.use("/about", aboutRouter);
 app.use("/contact", contactRouter);

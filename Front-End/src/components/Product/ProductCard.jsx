@@ -10,8 +10,10 @@ const ProductCard = ({ product }) => {
           className="rounded-t h-52 w-full"
         />
         <div className="p-2 text-center">
-          <h2 className="text-neutral font-semibold text-xl">
-            {product?.title}
+          <h2 className="text-neutral font-semibold text-base">
+            {product?.title?.length > 31
+              ? product?.title.slice(0, 32) + "..."
+              : product?.title}
           </h2>
 
           <p className="text-neutral-content mt-1">{product?.price}৳</p>

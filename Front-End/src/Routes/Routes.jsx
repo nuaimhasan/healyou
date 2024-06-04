@@ -44,6 +44,10 @@ import Favicon from "../pages/Dashboard/Favicon/Favicon";
 import AllServices from "../pages/Dashboard/Services/AllServices";
 import AddService from "../pages/Dashboard/Services/AddService";
 import EditService from "../pages/Dashboard/Services/EditService";
+import OrderCheckout from "../pages/Checkout/OrderCheckout";
+import RentCheckout from "../pages/Checkout/RentCheckout";
+import Orders from "../pages/Dashboard/Orders/Orders";
+import Rents from "../pages/Dashboard/Rents/Rents";
 
 export const routes = createBrowserRouter([
   {
@@ -92,6 +96,16 @@ export const routes = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+
+      // Checkout
+      {
+        path: "/order/checkout/:id",
+        element: <OrderCheckout />,
+      },
+      {
+        path: "/rent/checkout/:id",
+        element: <RentCheckout />,
       },
     ],
   },
@@ -150,6 +164,18 @@ export const routes = createBrowserRouter([
       {
         path: "/admin/products/edit-product/:id",
         element: <EditProduct />,
+      },
+
+      //----------Orders
+      {
+        path: "/admin/orders",
+        element: <Orders />,
+      },
+
+      //----------Rents
+      {
+        path: "/admin/rents",
+        element: <Rents />,
       },
 
       {

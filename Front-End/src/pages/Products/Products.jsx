@@ -15,12 +15,11 @@ export default function Products() {
   let subSubCategoryParams = params?.subSubCategory
     ? params?.subSubCategory
     : "";
-  console.log(categoryParams, subCategoryParams, subSubCategoryParams);
 
   const query = {};
   const [page, setPage] = useState(1);
   // eslint-disable-next-line no-unused-vars
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(10);
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [subSubCategory, setSubSubCategory] = useState("");
@@ -72,7 +71,7 @@ export default function Products() {
     <section>
       <div className="container py-10">{content}</div>
 
-      {data?.data?.length > 0 && (
+      {data?.data?.length > 10 && (
         <div className="flex items-center justify-center my-16">
           <div className="flex items-center space-x-1 border border-gray-300 rounded overflow-hidden text-sm">
             <button

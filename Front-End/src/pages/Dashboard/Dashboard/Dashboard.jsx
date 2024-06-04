@@ -7,6 +7,7 @@ import { useGetSubCategoriesQuery } from "../../../Redux/subCategory/subCategory
 import { useGetSubSubCategoriesQuery } from "../../../Redux/subSubCategory/subSubCategoryApi";
 import { useGetAllProductsQuery } from "../../../Redux/product/productApi";
 import { useGetAdminsQuery } from "../../../Redux/user/userApi";
+import Orders from "../Orders/Orders";
 
 export default function Dashboard() {
   const { data: services } = useGetServicesQuery();
@@ -93,6 +94,10 @@ export default function Dashboard() {
             <FaUserShield className="text-xl" />
           </div>
         </div>
+      </div>
+
+      <div className="mt-6 shadow-sm">
+        <Orders />
       </div>
     </section>
   );

@@ -8,10 +8,15 @@ export default function ProductDetails() {
   const { slug } = useParams();
 
   const { data, isLoading } = useGetProductBySlugQuery(slug);
-  console.log(data?.data);
+
   if (isLoading) return <Spinner />;
 
-  const perserDescription = perser(data?.data?.description);
+  const perserDescription =
+    data?.data?.description && perser(data?.data?.description);
+
+  const rentDescription =
+    data?.data?.rent?.rent_description &&
+    perser(data?.data?.rent?.rent_description);
 
   return (
     <section className="py-6">
@@ -40,14 +45,31 @@ export default function ProductDetails() {
               Price: {data?.data?.price}৳
             </h1>
 
+            {data?.data?.rent && (
+              <div className="mt-4">
+                <p>
+                  Rent Price: {data?.data?.rent?.rent_price}৳ (
+                  {data?.data?.rent?.rent_type})
+                </p>
+                <p>{rentDescription}</p>
+              </div>
+            )}
+
             <div className="mt-4 flex items-center gap-3">
-              <Link to="/checkout" className="primary_btn text-sm">
+              <Link
+                to={`/order/checkout/${data?.data?._id}`}
+                className="primary_btn text-sm"
+              >
                 Order Now
               </Link>
-
-              <Link to="/checkout" className="primary_btn text-sm">
-                Rent Now
-              </Link>
+              {data?.data?.rent && (
+                <Link
+                  to={`/rent/checkout/${data?.data?._id}`}
+                  className="primary_btn text-sm"
+                >
+                  Rent Now
+                </Link>
+              )}
             </div>
 
             <br />

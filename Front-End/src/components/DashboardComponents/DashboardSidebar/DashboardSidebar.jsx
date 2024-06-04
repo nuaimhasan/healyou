@@ -4,7 +4,10 @@ import {
   MdOutlineDashboard,
   MdContactPhone,
   MdDesignServices,
+  MdOutlineCategory,
+  MdOutlineAddShoppingCart,
 } from "react-icons/md";
+
 import { RiAdminFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import SidebarItems from "./SidebarItems";
@@ -26,7 +29,7 @@ const adminSidebarItems = [
   },
 
   {
-    icon: <BsCart4 />,
+    icon: <MdOutlineCategory />,
     title: "Categories",
     subMenu: [
       {
@@ -48,6 +51,18 @@ const adminSidebarItems = [
     icon: <BsCart4 />,
     title: "Products",
     path: "/admin/products/all-products",
+  },
+
+  {
+    icon: <MdOutlineAddShoppingCart />,
+    title: "Orders",
+    path: "/admin/orders",
+  },
+
+  {
+    icon: <MdOutlineAddShoppingCart />,
+    title: "Rents",
+    path: "/admin/rents",
   },
 
   {

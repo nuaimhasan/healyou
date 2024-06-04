@@ -21,6 +21,7 @@ exports.addProduct = async (req, res) => {
     ...data,
     image,
     slug,
+    rent: data?.rent && JSON.parse(data?.rent),
   };
 
   try {

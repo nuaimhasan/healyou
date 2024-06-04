@@ -20,6 +20,10 @@ const AddProduct = () => {
   const [subCategoryId, setSubCategoryId] = useState("");
   const [subSubCategoryId, setSubSubCategoryId] = useState("");
 
+  const [rentA, setRentA] = useState(false);
+  const [rentType, setRentType] = useState("monthly");
+  const [rentDescription, setRentDescription] = useState("");
+
   const { data: categories } = useGetCategoriesQuery();
   const { data: category } = useGetCategoryQuery(categoryId);
   const { data: subCategory } = useGetSubCategoryQuery(subCategoryId);
@@ -28,10 +32,16 @@ const AddProduct = () => {
   const subCategories = category?.data?.subCategories;
   const subSubCategories = subCategory?.data?.subSubCategories;
 
+  //------------------Add Product
   const handleAddProduct = async (e) => {
     e.preventDefault();
     const title = e.target.title.value;
     const price = e.target.price.value;
+    const rent = {
+      rent_type: rentType,
+      rent_price: e.target?.rent_price?.value,
+      rent_description: rentDescription,
+    };
 
     if (image?.length <= 0) {
       return Swal.fire("", "Image is required", "warning");
@@ -49,8 +59,10 @@ const AddProduct = () => {
     if (subCategoryId) formData.append("subCategory", subCategoryId);
     if (subSubCategoryId) formData.append("subSubCategory", subSubCategoryId);
     formData.append("image", image[0].file);
+    if (rentA) formData.append("rent", JSON.stringify(rent));
 
     const res = await addProduct(formData).unwrap();
+
     if (res?.success === true) {
       Swal.fire("", res.message, "success");
       e.target.reset();
@@ -184,7 +196,7 @@ const AddProduct = () => {
           </div>
 
           <div className="md:col-span-2 border rounded">
-            <p className="border-b p-3">Description</p>
+            <p className="border-b p-3">Product Description</p>
 
             <div className="p-4 about_details">
               <JoditEditor
@@ -194,6 +206,81 @@ const AddProduct = () => {
               />
             </div>
           </div>
+        </div>
+
+        {/* Rent */}
+        <div className="mt-4">
+          <div className="flex items-center gap-3">
+            <h2 className="font-medium">Rent Available?</h2>
+
+            <div className="flex items-center">
+              <input
+                defaultChecked={!rentA && true}
+                id="variant-1"
+                type="radio"
+                name="variant"
+                className="cursor-pointer"
+                onClick={() => setRentA(false)}
+              />
+              <label
+                htmlFor="variant-1"
+                className="pl-1 text-sm font-medium cursor-pointer"
+              >
+                No
+              </label>
+            </div>
+
+            <div className="flex items-center">
+              <input
+                defaultChecked={rentA && true}
+                id="variant-2"
+                type="radio"
+                name="variant"
+                onClick={() => setRentA(true)}
+                className="cursor-pointer"
+              />
+              <label
+                htmlFor="variant-2"
+                className="pl-1 text-sm font-medium cursor-pointer"
+              >
+                Yes
+              </label>
+            </div>
+          </div>
+
+          {rentA && (
+            <div className="mt-2 border rounded p-4">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div>
+                  <p className="mb-1">Rent Type</p>
+                  <select onChange={(e) => setRentType(e.target.value)}>
+                    <option defaultValue="daily">Daily</option>
+                    <option defaultValue="monthly" selected>
+                      Monthly
+                    </option>
+                    <option defaultValue="yearly">Yearly</option>
+                  </select>
+                </div>
+
+                <div>
+                  <p className="mb-1">Rent Price ({rentType})</p>
+                  <input type="number" name="rent_price" />
+                </div>
+              </div>
+
+              <div className="mt-2 border rounded">
+                <p className="border-b p-3">Rent Description</p>
+
+                <div className="p-4 about_details">
+                  <JoditEditor
+                    ref={editor}
+                    value={rentDescription}
+                    onBlur={(text) => setRentDescription(text)}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-6">

@@ -35,6 +35,17 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  rent: {
+    rent_type: {
+      type: String,
+    },
+    rent_price: {
+      type: Number,
+    },
+    rent_description: {
+      type: String,
+    },
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
