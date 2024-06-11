@@ -19,6 +19,7 @@ export default function ServiceCard({ service }) {
           <h2 className="text-[19px] font-semibold duration-200 service_title">
             {service?.title}
           </h2>
+          <p>Service Charge: {service?.charge}৳</p>
         </Link>
         <p className="mt-2 text-xs text-neutral-content">
           {service?.short_description?.length > 100

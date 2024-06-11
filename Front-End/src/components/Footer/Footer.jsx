@@ -26,16 +26,26 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="text-gray-300 text-xl font-medium">Quick Link</h2>
+            <h2 className="text-gray-300 text-xl font-medium">
+              Others Company
+            </h2>
             <ul className="text-gray-400 font-light mt-2 flex flex-col gap-1.5 text-[15px]">
               <li>
-                <Link to="/about-us" className="hover:underline">
-                  About Us
+                <Link
+                  to="https://oxygenbd24.com"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  OxygenBD24
                 </Link>
               </li>
               <li>
-                <Link to="/contact-us" className="hover:underline">
-                  Contact Us
+                <Link
+                  to="http://surgicalsbd.com/"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  SurgicalsBD
                 </Link>
               </li>
             </ul>
@@ -44,7 +54,7 @@ export default function Footer() {
           <div>
             <h2 className="text-gray-300 text-xl font-medium">Services</h2>
             <ul className="text-gray-400 font-light mt-2 flex flex-col gap-1.5 text-[15px]">
-              {services?.data?.map((service) => (
+              {services?.data?.slice(0, 5)?.map((service) => (
                 <li key={service?._id}>
                   <Link
                     to={`/service/${service?._id}`}

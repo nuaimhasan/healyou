@@ -12,7 +12,7 @@ export default function Header() {
   const [productsDropdown, setProductsDropdown] = useState(false);
   const [serviceDropdown, setServiceDropdown] = useState(false);
 
-  const { data } = useGetLogosQuery();
+  const { data, isLoading } = useGetLogosQuery();
 
   useEffect(() => {
     window.addEventListener("click", (e) => {
@@ -39,13 +39,17 @@ export default function Header() {
       <div className="w-[90%] xl:w-[1250px] mx-auto relative">
         <div className="header">
           <Link to="/">
-            <img
-              src={`${import.meta.env.VITE_BACKEND_URL}/logo/${
-                data?.data[0]?.logo
-              }`}
-              alt="logo"
-              className="w-36 sm:w-44 xl:w-52 h-9"
-            />
+            {isLoading ? (
+              "Healyou"
+            ) : (
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}/logo/${
+                  data?.data[0]?.logo
+                }`}
+                alt="logo"
+                className="w-36 sm:w-44 xl:w-52 h-9"
+              />
+            )}
           </Link>
 
           <nav className="menu_wrap flex items-center gap-2">

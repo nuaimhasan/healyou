@@ -10,6 +10,10 @@ const serviceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    charge: {
+      type: Number,
+      required: true,
+    },
     short_description: {
       type: String,
       required: true,

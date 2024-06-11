@@ -18,6 +18,7 @@ export default function AddService() {
     e.preventDefault();
 
     const title = e.target.title.value;
+    const charge = e.target.charge.value;
     const short_description = e.target.short_description.value;
 
     if (images?.length <= 0) {
@@ -26,6 +27,7 @@ export default function AddService() {
 
     const formData = new FormData();
     formData.append("title", title);
+    formData.append("charge", charge);
     formData.append("short_description", short_description);
     formData.append("description", description);
     formData.append("image", images[0].file);
@@ -100,6 +102,11 @@ export default function AddService() {
             <div>
               <p className="mb-1">Title</p>
               <input type="text" name="title" required />
+            </div>
+
+            <div>
+              <p className="mb-1">Service Charge</p>
+              <input type="number" name="charge" required />
             </div>
 
             <div>

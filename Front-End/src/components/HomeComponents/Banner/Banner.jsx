@@ -6,7 +6,9 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { useGetBannersQuery } from "../../../Redux/banner/bannerApi";
 
 export default function Banner() {
-  const { data } = useGetBannersQuery();
+  const { data, isLoading } = useGetBannersQuery();
+
+  if (isLoading) return <div className="banner_loading"></div>;
 
   return (
     <div>

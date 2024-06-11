@@ -191,3 +191,18 @@ table tbody td {
 .jodit-status-bar {
   display: none !important;
 }
+
+.product_card,
+.product_img {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.product_card:hover {
+  margin-top: -5px;
+  box-shadow: 1px 1px 10px #06b4d3aa !important;
+}
+
+.product_card:hover .product_img {
+  transform: scale(1.1);
+}
