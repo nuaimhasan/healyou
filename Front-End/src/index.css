@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --primary-color: #06b3d3;
-  --secondary-color: #306c71;
-  --accent-color: #031a2f;
-  --neutral-color: #404145;
-  --neutralContent-color: #7a7a7a;
+  --primary: #2f6b70;
+  --secondary: #00a79d;
+  --accent: #031a2f;
+  --neutral: #404145;
+  --neutralContent: #7a7a7a;
 }
 
 @tailwind base;
@@ -26,7 +26,7 @@ h2 {
 }
 
 .active {
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 .container {
@@ -46,8 +46,8 @@ h2 {
 }
 
 .primary_btn {
-  background: var(--secondary-color);
-  border: 2px solid var(--secondary-color);
+  background: var(--secondary);
+  border: 2px solid var(--secondary);
   color: #fff;
   padding: 8px 30px;
   font-weight: 500;
@@ -58,12 +58,12 @@ h2 {
 
 .primary_btn:hover {
   background: transparent;
-  color: var(--secondary-color);
+  color: var(--secondary);
 }
 
 .secondary_btn {
-  background: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  background: var(--primary);
+  border: 2px solid var(--primary);
   color: #fff;
   padding: 8px 30px;
   border-radius: 5px;
@@ -74,7 +74,7 @@ h2 {
 
 .secondary_btn:hover {
   background: transparent;
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 .overlay {
@@ -100,7 +100,7 @@ h2 {
   background: #f4951e !important;
 }
 .alliances span.swiper-pagination-bullet {
-  background: var(--secondary-color);
+  background: var(--secondary);
 }
 
 /* ---------------------Modal------------ */

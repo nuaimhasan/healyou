@@ -16,11 +16,11 @@ export default function ServiceCard({ service }) {
       </Link>
       <div className="p-4 pb-8">
         <Link to={`service/${service?._id}`}>
-          <h2 className="text-[19px] font-semibold duration-200 service_title">
+          <h2 className="text-[19px] font-semibold duration-200 service_title text-primary">
             {service?.title}
           </h2>
-          <p>Service Charge: {service?.charge}৳</p>
         </Link>
+        <p>Service Charge: {service?.charge}৳</p>
         <p className="mt-2 text-xs text-neutral-content">
           {service?.short_description?.length > 100
             ? service?.short_description.slice(0, 100) + "..."

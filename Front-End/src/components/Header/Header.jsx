@@ -35,19 +35,23 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="py-2 2xl:py-0 sticky top-0 bg-[#ffffffcc] backdrop-blur-[30px] z-50 shadow">
-      <div className="w-[90%] xl:w-[1250px] mx-auto relative">
+    <header className="sticky top-0 bg-[#ffffffcc] backdrop-blur-[30px] z-50 shadow">
+      <div className="container relative">
         <div className="header">
           <Link to="/">
             {isLoading ? (
-              "Healyou"
+              <img
+                src="/images/logo/logo.png"
+                alt="logo"
+                className="w-36 sm:w-44 xl:w-48"
+              />
             ) : (
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}/logo/${
                   data?.data[0]?.logo
                 }`}
                 alt="logo"
-                className="w-36 sm:w-44 xl:w-52 h-9"
+                className="w-36 sm:w-44 xl:w-48"
               />
             )}
           </Link>

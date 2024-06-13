@@ -26,6 +26,7 @@ const logoRouter = require("./routes/logoRoutes");
 const themeRouter = require("./routes/themeRoutes");
 
 const adminRouter = require("./routes/administratorRoute");
+const seoRouter = require("./routes/seoRoutes");
 
 const app = express();
 app.use(cors());
@@ -57,6 +58,7 @@ app.use("/sub-sub-categories", subSubCategoryRouter);
 app.use("/themes", themeRouter);
 
 app.use("/admins", adminRouter);
+app.use("/seo", seoRouter);
 
 app.get("/", (req, res) => {
   res.send(`Server is Running on port ${port}`);

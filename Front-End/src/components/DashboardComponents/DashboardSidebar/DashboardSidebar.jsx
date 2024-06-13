@@ -7,13 +7,13 @@ import {
   MdOutlineCategory,
   MdOutlineAddShoppingCart,
 } from "react-icons/md";
-
 import { RiAdminFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import SidebarItems from "./SidebarItems";
 import { useGetLogosQuery } from "../../../Redux/logo/logoApi";
 
 import { FcAbout } from "react-icons/fc";
+import { FaChartLine } from "react-icons/fa";
 
 const adminSidebarItems = [
   {
@@ -102,6 +102,12 @@ const adminSidebarItems = [
         path: "/admin/front-end/themes",
       },
     ],
+  },
+
+  {
+    icon: <FaChartLine />,
+    title: "SEO Setting",
+    path: "/admin/seo",
   },
 ];
 

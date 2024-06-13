@@ -48,6 +48,7 @@ import OrderCheckout from "../pages/Checkout/OrderCheckout";
 import RentCheckout from "../pages/Checkout/RentCheckout";
 import Orders from "../pages/Dashboard/Orders/Orders";
 import Rents from "../pages/Dashboard/Rents/Rents";
+import SEO from "../pages/SEO/SEO";
 
 export const routes = createBrowserRouter([
   {
@@ -245,6 +246,11 @@ export const routes = createBrowserRouter([
       {
         path: "/admin/front-end/themes",
         element: <Themes />,
+      },
+
+      {
+        path: "/admin/seo",
+        element: <SEO />,
       },
     ],
   },
