@@ -10,19 +10,19 @@ export const counterApi = apiSlice.injectEndpoints({
     }),
 
     addCounter: builder.mutation({
-      query: (counterInfo) => ({
+      query: (formData) => ({
         url: `/counter/add`,
         method: "POST",
-        body: counterInfo,
+        body: formData,
       }),
       invalidatesTags: ["counter"],
     }),
 
     updateCounter: builder.mutation({
-      query: ({ id, counterInfo }) => ({
+      query: ({ id, formData }) => ({
         url: `/counter/update/${id}`,
         method: "PATCH",
-        body: counterInfo,
+        body: formData,
       }),
       invalidatesTags: ["counter"],
     }),

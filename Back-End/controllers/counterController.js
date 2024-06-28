@@ -1,8 +1,20 @@
 const Counter = require("../models/counterModel");
+const fs = require("fs");
 
 exports.add = async (req, res) => {
   try {
-    const data = req?.body;
+    const image = req?.file?.filename;
+    if (!image) {
+      return res.status(400).json({
+        success: false,
+        error: "background image is required",
+      });
+    }
+
+    const data = {
+      ...req.body,
+      bgImage: image,
+    };
 
     const result = await Counter.create(data);
 
@@ -15,6 +27,12 @@ exports.add = async (req, res) => {
     res.status(400).json({
       success: false,
       error: error.message,
+    });
+
+    fs.unlink(`./uploads/counter/${contact?.bgImage}`, (err) => {
+      if (err) {
+        console.error(err);
+      }
     });
   }
 };
@@ -37,11 +55,33 @@ exports.get = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
+  const image = req?.file?.filename;
   const data = req?.body;
   const id = req?.params?.id;
 
   try {
-    const result = await Counter.findByIdAndUpdate(id, data, { new: true });
+    const counter = await Counter.findById(id);
+
+    let newData;
+
+    if (image) {
+      newData = {
+        ...data,
+        bgImage: image,
+      };
+
+      fs.unlink(`./uploads/counter/${counter?.bgImage}`, (err) => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    } else {
+      newData = {
+        ...data,
+        bgImage: counter?.bgImage,
+      };
+    }
+    const result = await Counter.findByIdAndUpdate(id, newData, { new: true });
 
     res.status(200).json({
       success: true,
@@ -52,6 +92,12 @@ exports.update = async (req, res) => {
     res.status(400).json({
       success: false,
       error: error.message,
+    });
+
+    fs.unlink(`./uploads/counter/${image}`, (err) => {
+      if (err) {
+        console.error(err);
+      }
     });
   }
 };

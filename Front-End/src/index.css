@@ -217,3 +217,52 @@ table tbody td {
 .product_card:hover .product_btn {
   background: var(--accent);
 }
+
+/* -------------pulse button-------------- */
+.pulse {
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+  color: #fff;
+}
+.pulse:before,
+.pulse:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.messanger.pulse:before,
+.messanger.pulse:after {
+  background-color: #0099ff;
+}
+.whatsapp.pulse:before,
+.whatsapp.pulse:after {
+  background-color: #25d366;
+}
+
+.pulse:before {
+  animation: pulse 2s ease-out infinite;
+}
+.pulse:after {
+  animation: pulse 2s 1s ease-out infinite;
+}
+@keyframes pulse {
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

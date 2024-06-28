@@ -20,7 +20,6 @@ exports.updateContact = async (req, res) => {
     let newData;
 
     if (image && banner) {
-
       newData = {
         ...data,
         image: image,
@@ -38,8 +37,6 @@ exports.updateContact = async (req, res) => {
           console.error(err);
         }
       });
-
-      
     } else if (image) {
       fs.unlink(`./uploads/contactus/${contact.image}`, (err) => {
         if (err) {

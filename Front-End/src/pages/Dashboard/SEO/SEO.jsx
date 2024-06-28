@@ -5,7 +5,7 @@ import {
   useAddSEOMutation,
   useGetSEOQuery,
   useUpdateSEOMutation,
-} from "../../Redux/seo/seoapi";
+} from "../../../Redux/seo/seoapi";
 
 export default function SEO() {
   const { data } = useGetSEOQuery();

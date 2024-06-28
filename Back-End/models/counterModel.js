@@ -18,6 +18,10 @@ const counterSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    bgImage: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: false }
 );

@@ -4,9 +4,17 @@ import "./CounterArea.css";
 export default function CounterArea() {
   const { data } = useGetCounterQuery();
   const counter = data?.data[0];
+  const imageUrl = `${import.meta.env.VITE_BACKEND_URL}/counter/${
+    counter?.bgImage
+  }`;
 
   return (
-    <section className="bg-[url('/images/counter-bg.jpg')] counter_wrap">
+    <section
+      className="counter_wrap"
+      style={{
+        backgroundImage: `url(${imageUrl})`,
+      }}
+    >
       <div className="bg-[#1b5b62c2] py-28 text-base-100">
         <div className="container">
           <div className="md:mx-28 grid grid-cols-2 sm:grid-cols-4">

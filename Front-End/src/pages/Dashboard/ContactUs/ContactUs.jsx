@@ -83,6 +83,8 @@ const ContactUs = () => {
     const email = e.target.email.value;
     const phone = e.target.phone.value;
     const address = e.target.address.value;
+    const messangerLink = e.target.messangerLink.value;
+    const wpLink = e.target.wpLink.value;
     const facebookLink = e.target.facebookLink.value;
     const twitterLink = e.target.twitterLink.value;
     const linkedinLink = e.target.linkedinLink.value;
@@ -93,6 +95,8 @@ const ContactUs = () => {
     formData.append("email", email);
     formData.append("phone", phone);
     formData.append("address", address);
+    formData.append("messangerLink", messangerLink);
+    formData.append("wpLink", wpLink);
     formData.append("facebookLink", facebookLink);
     formData.append("twitterLink", twitterLink);
     formData.append("linkedinLink", linkedinLink);
@@ -133,12 +137,25 @@ const ContactUs = () => {
 
           <div>
             <p className="mb-1">Address</p>
-            <input
-              type="text"
+            <textarea
               name="address"
               required
               defaultValue={contactUs?.address}
+            ></textarea>
+          </div>
+
+          <div>
+            <p className="mb-1">Messanger Link</p>
+            <input
+              type="text"
+              name="messangerLink"
+              defaultValue={contactUs?.messangerLink}
             />
+          </div>
+
+          <div>
+            <p className="mb-1">Whatsapp Link</p>
+            <input type="text" name="wpLink" defaultValue={contactUs?.wpLink} />
           </div>
 
           <div>
@@ -167,6 +184,7 @@ const ContactUs = () => {
             />
           </div>
         </div>
+
         <div className="flex gap-5 md:flex-row flex-col mt-10">
           <div className="">
             <p className="mb-1">Banner</p>
@@ -280,6 +298,7 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
+
         <div className="mt-5">
           <div className="flex gap-2">
             <button

@@ -1,9 +1,10 @@
 import "./DashboardLayout.css";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useState } from "react";
 import DashboardSidebar from "../components/DashboardComponents/DashboardSidebar/DashboardSidebar";
 import DashboardHeader from "../components/DashboardComponents/DashboardHeader/DashboardHeader";
 import { Outlet } from "react-router-dom";
+import Spinner from "../components/Spinner/Spinner";
 
 export default function DashboardLayout() {
   const [sidebar, setSidebar] = useState(false);
@@ -27,7 +28,9 @@ export default function DashboardLayout() {
       <div className="admin_content">
         <DashboardHeader setSidebar={setSidebar} />
         <main className="sm:p-5 py-5">
-          <Outlet />
+          <Suspense fallback={<Spinner />}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </section>

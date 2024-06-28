@@ -18,6 +18,14 @@ const ContactSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    wpLink: {
+      type: String,
+      required: true,
+    },
+    messangerLink: {
+      type: String,
+      required: true,
+    },
 
     address: {
       type: String,

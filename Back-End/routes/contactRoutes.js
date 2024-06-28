@@ -3,8 +3,9 @@ const {
   addContact,
   updateContact,
 } = require("../controllers/contactController");
-const multer = require("multer");
 const router = require("express").Router();
+
+const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
