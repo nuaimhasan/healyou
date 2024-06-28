@@ -25,6 +25,10 @@ export default function App() {
       "--secondary",
       colors?.secondary
     );
+    document.documentElement.style.setProperty(
+      "--accent",
+      colors?.accent ? colors?.accent : "#041f38"
+    );
   }, [colors]);
 
   if (!authChecked) {

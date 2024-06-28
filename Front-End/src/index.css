@@ -2,8 +2,8 @@
 
 :root {
   --primary: #2f6b70;
-  --secondary: #00a79d;
-  --accent: #031a2f;
+  --secondary: #0064a7;
+  --accent: #041f38;
   --neutral: #404145;
   --neutralContent: #7a7a7a;
 }
@@ -45,10 +45,10 @@ h2 {
     0 8px 9px -5px hsla(0, 0%, 8%, 0.06) !important;
 }
 
-.primary_btn {
-  background: var(--secondary);
-  border: 2px solid var(--secondary);
-  color: #fff;
+.secondary_btn {
+  background: #fff;
+  border: 2px solid #fff;
+  color: var(--secondary);
   padding: 8px 30px;
   font-weight: 500;
   border-radius: 4px;
@@ -56,12 +56,28 @@ h2 {
   transition: all 0.3s ease;
 }
 
-.primary_btn:hover {
+.secondary_btn:hover {
   background: transparent;
-  color: var(--secondary);
+  color: #fff;
 }
 
-.secondary_btn {
+.primary_btn {
+  background: #fff;
+  border: 2px solid #fff;
+  color: var(--primary);
+  padding: 8px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.primary_btn:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.primary_light_btn {
   background: var(--primary);
   border: 2px solid var(--primary);
   color: #fff;
@@ -72,28 +88,18 @@ h2 {
   transition: all 0.3s ease;
 }
 
-.secondary_btn:hover {
+.primary_light_btn:hover {
   background: transparent;
   color: var(--primary);
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 999;
-  background: #0000004f;
-
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
+.primary_bg {
+  background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #fff;
 }
-
-.overlay_show {
-  opacity: 1;
-  visibility: visible;
+.secondary_bg {
+  background-image: linear-gradient(180deg, var(--primary), var(--secondary));
+  color: #fff;
 }
 
 .alliances span.swiper-pagination-bullet.swiper-pagination-bullet-active {
@@ -192,17 +198,22 @@ table tbody td {
   display: none !important;
 }
 
-.product_card,
-.product_img {
+.product_card {
+  background: var(--accent);
+  box-shadow: 1px 1px 10px var(--primary);
+}
+
+.product_card {
   transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .product_card:hover {
   margin-top: -5px;
-  box-shadow: 1px 1px 10px #06b4d3aa !important;
+  box-shadow: 1px 1px 10px #fff;
+  background: var(--primary);
 }
 
-.product_card:hover .product_img {
-  transform: scale(1.1);
+.product_card:hover .product_btn {
+  background: var(--accent);
 }

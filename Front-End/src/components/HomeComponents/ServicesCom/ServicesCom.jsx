@@ -7,10 +7,10 @@ export default function ServicesCom() {
   const services = data?.data;
 
   return (
-    <section className="py-8 sm:py-10">
+    <section className="primary_bg py-8 sm:py-10">
       <div className="container">
         <div>
-          <h2 className="text-2xl sm:text-4xl font-semibold text-primary text-center">
+          <h2 className="text-2xl sm:text-4xl font-semibold text-center">
             Our Exclusive Services
           </h2>
         </div>

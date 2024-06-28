@@ -5,6 +5,8 @@ import { MdOutlineMail, MdOutlineLocationOn } from "react-icons/md";
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
 import { useGetServicesQuery } from "../../Redux/service/service";
+import { useGetBusinessInfoQuery } from "../../Redux/businessInfo/businessInfoApi";
+import { useGetOtherServiceQuery } from "../../Redux/otherService/otherServiceApi";
 
 export default function Footer() {
   const { data: logos } = useGetLogosQuery();
@@ -12,6 +14,14 @@ export default function Footer() {
   const { data: contactData } = useGetContactsQuery();
   const contact = contactData?.data[0];
   const { data: services } = useGetServicesQuery();
+
+  const { data: businessData } = useGetBusinessInfoQuery();
+  const businessInfo = businessData?.data[0];
+
+  const currentYear = new Date().getFullYear();
+
+  const { data: otherServiceData } = useGetOtherServiceQuery();
+  const otherServices = otherServiceData?.data;
 
   return (
     <footer className="bg-accent pt-10 pb-5">
@@ -30,24 +40,17 @@ export default function Footer() {
               Others Company
             </h2>
             <ul className="text-gray-400 font-light mt-2 flex flex-col gap-1.5 text-[15px]">
-              <li>
-                <Link
-                  to="https://oxygenbd24.com"
-                  target="_blank"
-                  className="hover:underline"
-                >
-                  OxygenBD24
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="http://surgicalsbd.com/"
-                  target="_blank"
-                  className="hover:underline"
-                >
-                  SurgicalsBD
-                </Link>
-              </li>
+              {otherServices?.map((otherService) => (
+                <li key={otherService?._id}>
+                  <Link
+                    to={otherService?.link}
+                    target="_blank"
+                    className="hover:underline"
+                  >
+                    {otherService?.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -97,7 +100,8 @@ export default function Footer() {
         <div className="border-t pt-5">
           <div className="flex justify-between items-center">
             <p className="text-gray-400 text-sm font-light">
-              Copyright © 2020 healyou. All rights reserved. Powered by{" "}
+              Copyright © {businessInfo?.businessStartYear}-{currentYear}{" "}
+              {businessInfo?.businessName}. All rights reserved. developed by{" "}
               <Link
                 to="https://emanagerit.com"
                 target="_blank"

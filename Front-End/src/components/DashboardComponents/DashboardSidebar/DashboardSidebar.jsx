@@ -14,6 +14,8 @@ import { useGetLogosQuery } from "../../../Redux/logo/logoApi";
 
 import { FcAbout } from "react-icons/fc";
 import { FaChartLine } from "react-icons/fa";
+import { GoNumber } from "react-icons/go";
+import { IoMdSettings } from "react-icons/io";
 
 const adminSidebarItems = [
   {
@@ -80,6 +82,11 @@ const adminSidebarItems = [
     title: "Contact Us",
     path: "/admin/contact-us",
   },
+  {
+    icon: <GoNumber className="text-lg" />,
+    title: "Counter",
+    path: "/admin/counter",
+  },
 
   {
     icon: <MdMonitor />,
@@ -100,6 +107,21 @@ const adminSidebarItems = [
       {
         title: "Themes",
         path: "/admin/front-end/themes",
+      },
+    ],
+  },
+
+  {
+    icon: <IoMdSettings />,
+    title: "General Setting",
+    subMenu: [
+      {
+        title: "Business Info",
+        path: "/admin/general-setting/business-info",
+      },
+      {
+        title: "Other Services",
+        path: "/admin/general-setting/other-services",
       },
     ],
   },

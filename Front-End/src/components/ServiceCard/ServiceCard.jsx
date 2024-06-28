@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ServiceCard({ service }) {
   return (
-    <div className="service_card shadow">
+    <div className="service_card">
       <Link
         to={`service/${service?._id}`}
         className="block h-48 overflow-hidden"
@@ -16,12 +16,12 @@ export default function ServiceCard({ service }) {
       </Link>
       <div className="p-4 pb-8">
         <Link to={`service/${service?._id}`}>
-          <h2 className="text-[19px] font-semibold duration-200 service_title text-primary">
+          <h2 className="text-[19px] font-semibold duration-200">
             {service?.title}
           </h2>
         </Link>
-        <p>Service Charge: {service?.charge}৳</p>
-        <p className="mt-2 text-xs text-neutral-content">
+        <p className="opacity-90">Service Charge: {service?.charge}৳</p>
+        <p className="mt-2 text-xs opacity-80">
           {service?.short_description?.length > 100
             ? service?.short_description.slice(0, 100) + "..."
             : service?.short_description}

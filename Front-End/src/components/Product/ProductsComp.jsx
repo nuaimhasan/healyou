@@ -9,13 +9,13 @@ const ProductsComp = () => {
   return (
     <>
       {!isLoading && isSuccess && data?.data?.length > 0 && (
-        <section className="py-10">
+        <section className="primary_bg py-10">
           <div className="container">
-            <h2 className="text-3xl text-center w-max mx-auto border-b-2 border-primary text-priamry pb-2 font-semibold text-neutral">
-              Products
+            <h2 className="text-2xl sm:text-4xl text-center w-max mx-auto border-b-2 border-base-100 text-priamry pb-2 font-semibold">
+              Our Latest Products
             </h2>
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-10">
               {data?.data?.slice(0, 4).map((product) => (
                 <ProductCard product={product} key={product?._id} />
               ))}

@@ -4,23 +4,25 @@ export const businessInfoApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getBusinessInfo: builder.query({
       query: () => ({
-        url: "/businessInfo",
+        url: "/businessInfo/get",
       }),
       providesTags: ["businessInfo"],
     }),
+
     addBusinessInfo: builder.mutation({
-      query: (data) => ({
-        url: `/businessInfo/add-info`,
+      query: (info) => ({
+        url: `/businessInfo/add`,
         method: "POST",
-        body: data,
+        body: info,
       }),
       invalidatesTags: ["businessInfo"],
     }),
+
     updateBusinessInfo: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/businessInfo/update-info/${id}`,
+      query: ({ id, info }) => ({
+        url: `/businessInfo/update/${id}`,
         method: "PATCH",
-        body: data,
+        body: info,
       }),
       invalidatesTags: ["businessInfo"],
     }),

@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { useGetCategoriesQuery, useGetCategoryQuery } from "../../../Redux/category/categoryApi";
+import {
+  useGetCategoriesQuery,
+  useGetCategoryQuery,
+} from "../../../Redux/category/categoryApi";
 import { useAddSubSubCategoryMutation } from "../../../Redux/subSubCategory/subSubCategoryApi";
 
 export default function AddSubSubCategory() {
@@ -75,7 +78,7 @@ export default function AddSubSubCategory() {
 
       <div className="mt-5">
         <button
-          className="primary_btn text-sm"
+          className="primary_light_btn text-sm"
           disabled={isLoading && "disabled"}
         >
           {isLoading ? "Loading.." : "Add Sub SubCategory"}

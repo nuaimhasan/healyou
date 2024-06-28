@@ -136,7 +136,10 @@ export default function AddService() {
             >
               Cancel
             </Link>
-            <button disabled={isLoading && "disabled"} className="primary_btn">
+            <button
+              disabled={isLoading && "disabled"}
+              className="primary_light_btn"
+            >
               {isLoading ? "Loading..." : "Add Service"}
             </button>
           </div>

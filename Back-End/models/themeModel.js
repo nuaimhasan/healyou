@@ -9,6 +9,10 @@ const themeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  accent: {
+    type: String,
+    required: true,
+  },
 });
 
 const Theme = mongoose.model("Theme", themeSchema);

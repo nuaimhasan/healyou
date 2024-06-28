@@ -24,6 +24,9 @@ const faviconRouter = require("./routes/faviconRoutes");
 const logoRouter = require("./routes/logoRoutes");
 
 const themeRouter = require("./routes/themeRoutes");
+const counterRouter = require("./routes/counterRoutes");
+const businessInfoRouter = require("./routes/businessInfoRoutes");
+const otherServiceRouter = require("./routes/otherServiceRoutes");
 
 const adminRouter = require("./routes/administratorRoute");
 const seoRouter = require("./routes/seoRoutes");
@@ -56,6 +59,9 @@ app.use("/sub-categories", subCategoryRouter);
 app.use("/sub-sub-categories", subSubCategoryRouter);
 
 app.use("/themes", themeRouter);
+app.use("/counter", counterRouter);
+app.use("/businessInfo", businessInfoRouter);
+app.use("/otherService", otherServiceRouter);
 
 app.use("/admins", adminRouter);
 app.use("/seo", seoRouter);

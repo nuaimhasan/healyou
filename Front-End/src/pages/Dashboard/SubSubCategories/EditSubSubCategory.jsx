@@ -1,6 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useGetSubSubCategoryQuery, useUpdateSubSubCategoryMutation } from "../../../Redux/subSubCategory/subSubCategoryApi";
+import {
+  useGetSubSubCategoryQuery,
+  useUpdateSubSubCategoryMutation,
+} from "../../../Redux/subSubCategory/subSubCategoryApi";
 import Spinner from "../../../components/Spinner/Spinner";
 
 export default function EditSubSubCategory() {
@@ -45,7 +48,7 @@ export default function EditSubSubCategory() {
 
       <div className="mt-5">
         <button
-          className="primary_btn text-sm"
+          className="primary_light_btn text-sm"
           disabled={updateLoading && "disabled"}
         >
           {updateLoading ? "Loading.." : "Update Sub SubCategory"}

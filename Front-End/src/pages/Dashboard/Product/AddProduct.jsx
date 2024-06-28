@@ -284,7 +284,10 @@ const AddProduct = () => {
         </div>
 
         <div className="mt-6">
-          <button disabled={isLoading && "disabled"} className="primary_btn">
+          <button
+            disabled={isLoading && "disabled"}
+            className="primary_light_btn"
+          >
             {isLoading ? "Loading..." : "Add Product"}
           </button>
         </div>

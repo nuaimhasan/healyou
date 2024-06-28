@@ -13,6 +13,7 @@ export default function Themes() {
 
   const [pColor, setPColor] = useState("");
   const [sColor, setSColor] = useState("");
+  const [accentColor, setAccentColor] = useState("");
 
   const [
     addTheme,
@@ -78,10 +79,12 @@ export default function Themes() {
 
     const primary = e.target.primary.value;
     const secondary = e.target.secondary.value;
+    const accent = e.target.accent.value;
 
     const data = {
       primary,
       secondary,
+      accent,
     };
 
     if (id) {
@@ -143,13 +146,35 @@ export default function Themes() {
               />
             </div>
           </div>
+          <div>
+            <p className="mb-1 flex items-center gap-2">
+              Accent Color{" "}
+              <span
+                className="inline-block w-4 h-4 rounded-full"
+                style={{ backgroundColor: theme?.accent }}
+              ></span>
+            </p>
+            <div className="flex">
+              <input
+                type="text"
+                name="accent"
+                required
+                defaultValue={accentColor ? accentColor : theme?.accent}
+              />
+              <input
+                type="color"
+                className="w-12 h-9 rounded"
+                onChange={(e) => setAccentColor(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="mt-5">
           <div className="flex gap-2">
             <button
               disabled={addIsLoading || (updateIsLoading && "disabled")}
-              className="primary_btn"
+              className="primary_light_btn"
             >
               {addIsLoading || updateIsLoading
                 ? "Loading..."

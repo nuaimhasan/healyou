@@ -168,7 +168,7 @@ export default function About() {
         <div className="mt-6">
           <button
             disabled={(updateLoading || createLoading) && "disabled"}
-            className="primary_btn"
+            className="primary_light_btn"
             onClick={updateAboutUsHandler}
           >
             {updateLoading || createLoading

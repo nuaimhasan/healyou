@@ -168,7 +168,7 @@ export default function SEO() {
           <div className="flex gap-2">
             <button
               disabled={(addIsLoading || upIsLoading) && "disabled"}
-              className="primary_btn"
+              className="primary_light_btn"
             >
               {addIsLoading || upIsLoading
                 ? "Loading..."

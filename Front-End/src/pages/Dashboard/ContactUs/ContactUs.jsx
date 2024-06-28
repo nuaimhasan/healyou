@@ -284,7 +284,7 @@ const ContactUs = () => {
           <div className="flex gap-2">
             <button
               disabled={addIsLoading || (updateIsLoading && "disabled")}
-              className="primary_btn"
+              className="primary_light_btn"
             >
               {addIsLoading || updateIsLoading
                 ? "Loading..."

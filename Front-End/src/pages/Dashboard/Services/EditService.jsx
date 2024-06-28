@@ -169,7 +169,7 @@ export default function EditService() {
             </Link>
             <button
               disabled={editLoading && "disabled"}
-              className="primary_btn"
+              className="primary_light_btn"
             >
               {editLoading ? "Loading..." : "Edit Service"}
             </button>

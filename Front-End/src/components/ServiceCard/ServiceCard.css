@@ -1,6 +1,8 @@
 .service_card {
   border-radius: 6px;
   overflow: hidden;
+  background: var(--accent);
+  box-shadow: 1px 1px 10px var(--primary);
   transition: all 0.3s;
 }
 
@@ -18,7 +20,8 @@
 }
 
 .service_card:hover {
-  box-shadow: 1px 1px 10px var(--primary) !important;
+  box-shadow: 1px 1px 10px #fff;
+  background: var(--primary);
 }
 
 .service_card:hover .service_btn {

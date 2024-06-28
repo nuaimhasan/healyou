@@ -49,6 +49,9 @@ import RentCheckout from "../pages/Checkout/RentCheckout";
 import Orders from "../pages/Dashboard/Orders/Orders";
 import Rents from "../pages/Dashboard/Rents/Rents";
 import SEO from "../pages/SEO/SEO";
+import Counter from "../pages/Dashboard/Counter/Counter";
+import BusinessInfo from "../pages/Dashboard/GeneralSetting/BusinessInfo/BusinessInfo";
+import OthersServices from "../pages/Dashboard/GeneralSetting/OthersServices/OthersServices";
 
 export const routes = createBrowserRouter([
   {
@@ -222,6 +225,11 @@ export const routes = createBrowserRouter([
       },
 
       {
+        path: "/admin/counter",
+        element: <Counter />,
+      },
+
+      {
         path: "/admin/contact-us",
         element: <ContactUs />,
       },
@@ -246,6 +254,16 @@ export const routes = createBrowserRouter([
       {
         path: "/admin/front-end/themes",
         element: <Themes />,
+      },
+
+      // -------------general setting
+      {
+        path: "/admin/general-setting/business-info",
+        element: <BusinessInfo />,
+      },
+      {
+        path: "/admin/general-setting/other-services",
+        element: <OthersServices />,
       },
 
       {

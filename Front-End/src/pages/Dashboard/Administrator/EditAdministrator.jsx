@@ -101,7 +101,7 @@ export default function EditAdministrator() {
             <div>
               <button
                 disabled={isLoading && "disabled"}
-                className="primary_btn my-4"
+                className="primary_light_btn my-4"
               >
                 {isLoading ? "Loading..." : "Update Administrator"}
               </button>

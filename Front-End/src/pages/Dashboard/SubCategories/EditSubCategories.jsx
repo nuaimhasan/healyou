@@ -52,7 +52,10 @@ const EditSubCategories = () => {
 
         <div className="mt-5">
           <div className="flex gap-2">
-            <button disabled={isLoading && "disabled"} className="primary_btn text-sm">
+            <button
+              disabled={isLoading && "disabled"}
+              className="primary_light_btn text-sm"
+            >
               {isLoading ? "Loading..." : "Update Category"}
             </button>
           </div>

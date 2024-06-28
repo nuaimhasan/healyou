@@ -154,7 +154,10 @@ export default function Favicon() {
 
         <div className="mt-5">
           <div className="flex gap-2">
-            <button disabled={addLoading && "disabled"} className="primary_btn">
+            <button
+              disabled={addLoading && "disabled"}
+              className="primary_light_btn"
+            >
               {addLoading || updateLoading
                 ? "Loading..."
                 : favicon?._id

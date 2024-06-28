@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import {
-  useGetCategoriesQuery,
-} from "../../../Redux/category/categoryApi";
+import { useGetCategoriesQuery } from "../../../Redux/category/categoryApi";
 import { useAddSubCategoryMutation } from "../../../Redux/subCategory/subCategoryApi";
 
 const AddSubCategories = () => {
@@ -64,7 +62,10 @@ const AddSubCategories = () => {
 
         <div className="mt-5">
           <div className="flex gap-2">
-            <button disabled={isLoading && "disabled"} className="primary_btn">
+            <button
+              disabled={isLoading && "disabled"}
+              className="primary_light_btn"
+            >
               {isLoading ? "Loading..." : "Add Sub Category"}
             </button>
           </div>

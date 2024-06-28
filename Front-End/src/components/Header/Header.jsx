@@ -6,11 +6,13 @@ import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import ProductDropdown from "./ProductDropdown";
 import ServiceDropdown from "./ServiceDropdown";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import OtherServicesDropdown from "./OtherServices";
 
 export default function Header() {
   const [mobileMenu, setmobileMenu] = useState(false);
   const [productsDropdown, setProductsDropdown] = useState(false);
   const [serviceDropdown, setServiceDropdown] = useState(false);
+  const [otherServicseDropdown, setOtherServiceDropdown] = useState(false);
 
   const { data, isLoading } = useGetLogosQuery();
 
@@ -30,6 +32,10 @@ export default function Header() {
 
       if (!e.target.closest(".services_btn")) {
         setServiceDropdown(false);
+      }
+
+      if (!e.target.closest(".otherServices_btn")) {
+        setOtherServiceDropdown(false);
       }
     });
   }, []);
@@ -73,7 +79,7 @@ export default function Header() {
                 <Link
                   to="/services"
                   className="services_btn"
-                  onClick={() => setServiceDropdown(!setServiceDropdown)}
+                  onClick={() => setServiceDropdown(!serviceDropdown)}
                 >
                   Services <MdKeyboardArrowDown />
                 </Link>
@@ -98,6 +104,20 @@ export default function Header() {
               </li>
               <li>
                 <NavLink to="/contact-us">Contact Us</NavLink>
+              </li>
+              <li>
+                <button
+                  className="otherServices_btn"
+                  onClick={() =>
+                    setOtherServiceDropdown(!otherServicseDropdown)
+                  }
+                >
+                  Other Services <MdKeyboardArrowDown />
+                </button>
+
+                <OtherServicesDropdown
+                  otherServicseDropdown={otherServicseDropdown}
+                />
               </li>
             </ul>
           </nav>
