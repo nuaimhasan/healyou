@@ -1,11 +1,22 @@
 // import { lazy } from "react";
-import About from "../../components/About/About";
-import Banner from "../../components/HomeComponents/Banner/Banner";
-import CounterArea from "../../components/HomeComponents/CounterArea/CounterArea";
-import EmergencyServices from "../../components/HomeComponents/EmergencyServices/EmergencyServices";
+import { Suspense, lazy } from "react";
 
-import ServicesCom from "../../components/HomeComponents/ServicesCom/ServicesCom";
-import ProductsComp from "../../components/Product/ProductsComp";
+import Banner from "../../components/HomeComponents/Banner/Banner";
+import Spinner from "../../components/Spinner/Spinner";
+
+const About = lazy(() => import("../../components/About/About"));
+const CounterArea = lazy(() =>
+  import("../../components/HomeComponents/CounterArea/CounterArea")
+);
+const EmergencyServices = lazy(() =>
+  import("../../components/HomeComponents/EmergencyServices/EmergencyServices")
+);
+const ServicesCom = lazy(() =>
+  import("../../components/HomeComponents/ServicesCom/ServicesCom")
+);
+const ProductsComp = lazy(() =>
+  import("../../components/Product/ProductsComp")
+);
 
 export default function Home() {
   window.scroll(0, 0);
@@ -13,11 +24,13 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <About />
-      <CounterArea />
-      <ServicesCom />
-      <EmergencyServices />
-      <ProductsComp />
+      <Suspense fallback={<Spinner />}>
+        <About />
+        <CounterArea />
+        <ServicesCom />
+        <EmergencyServices />
+        <ProductsComp />
+      </Suspense>
     </>
   );
 }

@@ -88,6 +88,7 @@ const ContactUs = () => {
     const facebookLink = e.target.facebookLink.value;
     const twitterLink = e.target.twitterLink.value;
     const linkedinLink = e.target.linkedinLink.value;
+    const youtubeLink = e.target.youtubeLink.value;
 
     const formData = new FormData();
     formData.append("image", images[0]?.file);
@@ -100,6 +101,7 @@ const ContactUs = () => {
     formData.append("facebookLink", facebookLink);
     formData.append("twitterLink", twitterLink);
     formData.append("linkedinLink", linkedinLink);
+    formData.append("youtubeLink", youtubeLink);
 
     if (id) {
       await updateContact({ id, formData });
@@ -181,6 +183,15 @@ const ContactUs = () => {
               type="text"
               name="linkedinLink"
               defaultValue={contactUs?.linkedinLink}
+            />
+          </div>
+
+          <div>
+            <p className="mb-1">Youtube Link</p>
+            <input
+              type="text"
+              name="youtubeLink"
+              defaultValue={contactUs?.youtubeLink}
             />
           </div>
         </div>

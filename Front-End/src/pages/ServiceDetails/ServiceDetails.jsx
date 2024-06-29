@@ -24,11 +24,13 @@ export default function ServiceDetails() {
             />
           </div>
 
-          <div className="mt-4 text-center">
-            <h2 className="text-xl md:text-4xl font-semibold text-primary">
-              {service?.title}
-            </h2>
-            <p>Service Charge: {service?.charge}৳</p>
+          <div className="mt-4">
+            <div className="text-center">
+              <h2 className="text-xl md:text-4xl font-semibold text-primary">
+                {service?.title}
+              </h2>
+              <p>Service Charge: {service?.charge}৳</p>
+            </div>
 
             <div className="mt-3 text-[15px] text-neutral">
               <p>{service?.short_description}</p>

@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
-import { FaPhoneAlt, FaFacebook, FaLinkedin } from "react-icons/fa";
+import {
+  FaPhoneAlt,
+  FaFacebook,
+  FaLinkedin,
+  FaYoutubeSquare,
+} from "react-icons/fa";
 import { FaSquareTwitter } from "react-icons/fa6";
+
 import { MdEmail } from "react-icons/md";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
 
@@ -34,6 +40,9 @@ export default function TopHeader() {
             </Link>
             <Link to={contact?.linkedinLink} target="_blank">
               <FaLinkedin />
+            </Link>
+            <Link to={contact?.youtubeLink} target="_blank">
+              <FaYoutubeSquare />
             </Link>
           </div>
         </div>

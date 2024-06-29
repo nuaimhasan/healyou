@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { BiLogoFacebook, BiLogoLinkedin } from "react-icons/bi";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMail, MdOutlineLocationOn } from "react-icons/md";
+import { FaYoutube } from "react-icons/fa";
+import { FaSquareTwitter } from "react-icons/fa6";
+
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
 import { useGetServicesQuery } from "../../Redux/service/service";
@@ -111,7 +114,7 @@ export default function Footer() {
               </Link>
             </p>
 
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-2 items-center">
               <Link
                 to={contact?.facebookLink}
                 target="_blank"
@@ -125,6 +128,20 @@ export default function Footer() {
                 className="w-7 h-7 rounded-full bg-primary/50 flex justify-center items-center text-base-100 hover:-mt-1 duration-200"
               >
                 <BiLogoLinkedin className="text-xl" />
+              </Link>
+              <Link
+                to={contact?.twitterLink}
+                target="_blank"
+                className="w-7 h-7 rounded-full bg-primary/50 flex justify-center items-center text-base-100 hover:-mt-1 duration-200"
+              >
+                <FaSquareTwitter className="text-xl" />
+              </Link>
+              <Link
+                to={contact?.youtubeLink}
+                target="_blank"
+                className="w-7 h-7 rounded-full bg-primary/50 flex justify-center items-center text-base-100 hover:-mt-1 duration-200"
+              >
+                <FaYoutube className="text-xl" />
               </Link>
             </div>
           </div>

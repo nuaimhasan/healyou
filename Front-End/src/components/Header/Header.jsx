@@ -49,7 +49,7 @@ export default function Header() {
               <img
                 src="/images/logo/logo.png"
                 alt="logo"
-                className="w-36 sm:w-44 xl:w-48"
+                className="w-36 sm:w-40 xl:w-44"
               />
             ) : (
               <img
@@ -57,7 +57,7 @@ export default function Header() {
                   data?.data[0]?.logo
                 }`}
                 alt="logo"
-                className="w-36 sm:w-44 xl:w-48"
+                className="w-36 sm:w-40 xl:w-44"
               />
             )}
           </Link>
