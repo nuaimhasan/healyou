@@ -1,10 +1,12 @@
-import { useGetServicesQuery } from "../../../Redux/service/service";
+import { useGetHomeServicesQuery } from "../../../Redux/service/homeServiceApi";
 import ServiceCard from "../../ServiceCard/ServiceCard";
+import Spinner from "../../Spinner/Spinner";
 
 export default function ServicesCom() {
-  const { data, isLoading } = useGetServicesQuery();
-  if (isLoading) return "Loading...";
-  const services = data?.data;
+  const { data: homeServices, isLoading } = useGetHomeServicesQuery();
+  const services = homeServices?.data[0]?.services;
+
+  if (isLoading) return <Spinner />;
 
   return (
     <section className="primary_bg py-8 sm:py-10">

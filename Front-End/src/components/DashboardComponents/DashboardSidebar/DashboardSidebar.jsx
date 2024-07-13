@@ -26,8 +26,17 @@ const adminSidebarItems = [
 
   {
     icon: <MdDesignServices />,
-    title: "Services",
-    path: "/admin/services",
+    title: "Service",
+    subMenu: [
+      {
+        title: "Categories",
+        path: "/admin/service/categories",
+      },
+      {
+        title: "Services",
+        path: "/admin/service/services",
+      },
+    ],
   },
 
   {
@@ -103,6 +112,10 @@ const adminSidebarItems = [
       {
         title: "Banner",
         path: "/admin/front-end/banner",
+      },
+      {
+        title: "Services",
+        path: "/admin/front-end/services",
       },
       {
         title: "Themes",

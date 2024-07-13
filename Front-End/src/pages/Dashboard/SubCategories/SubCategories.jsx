@@ -15,9 +15,9 @@ const SubCategories = () => {
 
   const [deleteCategory] = useDeleteSubCategoryMutation();
 
-   if (isLoading) {
-     return <Spinner />;
-   }
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   const handleDelete = async (subCategory) => {
     const id = subCategory?._id;
@@ -48,8 +48,6 @@ const SubCategories = () => {
   };
 
   let content = null;
-
- 
 
   if (isError) {
     content = <p className="text-red-500 mt-4">{error?.data?.error}</p>;
@@ -88,7 +86,7 @@ const SubCategories = () => {
           <h1 className="font-medium text-neutral">Categories</h1>
           <Link
             to="/admin/categories/add-sub-category"
-            className="secondary_btn"
+            className="primary_light_btn"
           >
             Add New Sub-Category
           </Link>

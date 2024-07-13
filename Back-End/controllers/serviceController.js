@@ -1,5 +1,7 @@
 const Service = require("../models/serviceModel");
 const fs = require("fs");
+const { pick } = require("../utils/pick");
+const { calculatePagination } = require("../utils/calculatePagination");
 
 exports.addService = async (req, res) => {
   const image = req?.file?.filename;
@@ -35,12 +37,30 @@ exports.addService = async (req, res) => {
 };
 
 exports.getServices = async (req, res) => {
+  const paginationOptions = pick(req.query, ["page", "limit"]);
+  const { page, limit, skip } = calculatePagination(paginationOptions);
+  const { category } = req.query;
   try {
-    const services = await Service.find({});
+    let query = {};
+    if (category) query.category = category;
+
+    const services = await Service.find(query)
+      .skip(skip)
+      .limit(limit)
+      .populate("category");
+
+    const total = await Service.countDocuments(query);
+    const pages = Math.ceil(parseInt(total) / parseInt(limit));
 
     res.status(200).json({
       success: true,
       message: "Service get success",
+      meta: {
+        total,
+        pages,
+        page,
+        limit,
+      },
       data: services,
     });
   } catch (error) {
@@ -54,7 +74,7 @@ exports.getServices = async (req, res) => {
 exports.getServicebyId = async (req, res) => {
   try {
     const id = req?.params?.id;
-    const service = await Service.findById(id);
+    const service = await Service.findById(id).populate("category");
     if (!service) {
       return res.status(404).json({
         success: false,

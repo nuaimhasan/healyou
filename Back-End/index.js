@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const port = process.env.port || 5000;
 
 // routers
-
+const homeServiceRouter = require("./routes/homeServiceRoute");
+const serviceCategoryRouter = require("./routes/serviceCategoryRoutes");
 const serviceRouter = require("./routes/serviceRoute");
 
 const categoryRouter = require("./routes/categoriesRoutes");
@@ -42,7 +43,10 @@ mongoose.connect(process.env.DB_URL).then(() => {
   console.log("Database connection is successful");
 });
 
+app.use("/service/home", homeServiceRouter);
+app.use("/service/category", serviceCategoryRouter);
 app.use("/services", serviceRouter);
+
 app.use("/products", productRouter);
 app.use("/order", orderRouter);
 app.use("/rent", rentRouter);

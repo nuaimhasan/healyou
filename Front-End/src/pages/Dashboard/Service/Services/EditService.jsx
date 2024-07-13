@@ -6,9 +6,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useEditServiceMutation,
   useGetSingleServiceQuery,
-} from "../../../Redux/service/service";
-import Spinner from "../../../components/Spinner/Spinner";
+} from "../../../../Redux/service/service";
+import Spinner from "../../../../components/Spinner/Spinner";
 import Swal from "sweetalert2";
+import { useGetServiceCategoriesQuery } from "../../../../Redux/service/serviceCategoryApi";
 
 export default function EditService() {
   const { id } = useParams();
@@ -20,6 +21,8 @@ export default function EditService() {
   const { data, isLoading } = useGetSingleServiceQuery(id);
   const service = data?.data;
 
+  const { data: categories } = useGetServiceCategoriesQuery();
+
   const [editService, { isLoading: editLoading }] = useEditServiceMutation();
 
   const handleEditService = async (e) => {
@@ -27,11 +30,13 @@ export default function EditService() {
     const title = e.target.title.value;
     const charge = e.target.charge.value;
     const short_description = e.target.short_description.value;
+    const category = e.target.category.value;
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("charge", charge);
     formData.append("short_description", short_description);
+    formData.append("category", category);
     if (description.length > 0) {
       formData.append("description", description);
     } else {
@@ -47,7 +52,7 @@ export default function EditService() {
       e.target.reset();
       setImages([]);
       setDescription("");
-      navigate("/admin/services");
+      navigate("/admin/service/services");
     } else {
       Swal.fire("", res?.error, "error");
     }
@@ -62,8 +67,8 @@ export default function EditService() {
       </div>
 
       <form onSubmit={handleEditService} className="p-4">
-        <div className="grid grid-cols-5 gap-6">
-          <div className="col-span-2 w-full flex flex-col gap-4">
+        <div className="grid grid-cols-5 gap-4">
+          <div className="col-span-2 w-full flex flex-col gap-2">
             <div>
               <div>
                 <p className="mb-1">Image</p>
@@ -141,6 +146,24 @@ export default function EditService() {
                 rows="5"
                 defaultValue={service?.short_description}
               ></textarea>
+            </div>
+
+            <div>
+              <p className="mb-1">Category</p>
+              <select
+                name="category"
+                required
+                defaultValue={service?.category?._id}
+              >
+                <option className="bg-primary" value={service?.category?._id}>
+                  {service?.category?.name}
+                </option>
+                {categories?.data?.map((category) => (
+                  <option key={category?._id} value={category?._id}>
+                    {category?.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 

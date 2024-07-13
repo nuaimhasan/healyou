@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="product_card rounded">
+    <div className="product_card rounded text-base-100">
       <img
         src={`${import.meta.env.VITE_BACKEND_URL}/products/${product?.image}`}
         alt=""

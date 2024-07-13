@@ -90,7 +90,10 @@ const Categories = () => {
       <div className="p-4 border-b bg-base-100 rounded">
         <div className="flex justify-between items-center">
           <h1 className="font-medium text-neutral">Categories</h1>
-          <Link to="/admin/categories/add-category" className="secondary_btn">
+          <Link
+            to="/admin/categories/add-category"
+            className="primary_light_btn"
+          >
             Add New Category
           </Link>
         </div>

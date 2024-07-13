@@ -2,11 +2,10 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import TopHeader from "../components/TopHeader/TopHeader";
-import Messanger from "../components/LiveContact/Messanger/Messanger";
-import Whatsapp from "../components/LiveContact/Whatsapp/Whatsapp";
 import Tawk from "../components/LiveContact/Tawk/Tawk";
 import { Suspense } from "react";
 import Spinner from "../components/Spinner/Spinner";
+import LiveContact from "../components/LiveContact/LiveContact";
 
 export default function MainLayout() {
   return (
@@ -21,8 +20,7 @@ export default function MainLayout() {
       <Footer />
 
       {/* Live Contact Btn */}
-      <Messanger />
-      <Whatsapp />
+      <LiveContact />
       <Tawk />
     </>
   );

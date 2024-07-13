@@ -1,7 +1,31 @@
-import ServicesCom from "../../components/HomeComponents/ServicesCom/ServicesCom";
+import { useSearchParams } from "react-router-dom";
+import { useGetServicesQuery } from "../../Redux/service/service";
+import ServiceCard from "../../components/ServiceCard/ServiceCard";
+import Spinner from "../../components/Spinner/Spinner";
+import { useEffect, useState } from "react";
+import Pagination from "../../components/Pagination/Pagination";
 
 export default function Services() {
-  window.scroll(0, 0);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+  const [params, setParams] = useSearchParams();
+  const category = params.get("c");
+
+  const query = {};
+  const [currentPage, setCurrentPage] = useState(1);
+  query["page"] = currentPage;
+  query["limit"] = 6;
+  if (category) query["category"] = category;
+
+  const { data, isLoading } = useGetServicesQuery({ ...query });
+  const services = data?.data;
+
+  useEffect(() => {
+    if (category) setCurrentPage(1);
+  }, [category]);
+
+  if (isLoading) return <Spinner />;
 
   return (
     <section>
@@ -18,7 +42,29 @@ export default function Services() {
         </div>
       </div>
 
-      <ServicesCom />
+      <div className="bg-primary py-10 text-base-100">
+        <div className="container">
+          <div>
+            <h2 className="text-2xl sm:text-4xl font-semibold text-center">
+              Our Exclusive Services
+            </h2>
+          </div>
+
+          <div className="mt-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {services?.map((service) => (
+                <ServiceCard key={service?._id} service={service} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <Pagination
+          pages={data?.meta?.pages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </section>
   );
 }

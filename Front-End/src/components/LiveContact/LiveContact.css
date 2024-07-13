@@ -1,0 +1,18 @@
+.mw_btn {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  left: 0px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.mw_btn_show {
+  left: 70px;
+  visibility: visible;
+  opacity: 1;
+}

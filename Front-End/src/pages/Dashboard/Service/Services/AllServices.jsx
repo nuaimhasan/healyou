@@ -4,8 +4,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import {
   useDeleteServiceMutation,
   useGetServicesQuery,
-} from "../../../Redux/service/service";
-import Spinner from "../../../components/Spinner/Spinner";
+} from "../../../../Redux/service/service";
+import Spinner from "../../../../components/Spinner/Spinner";
 import Swal from "sweetalert2";
 
 export default function AllServices() {
@@ -34,7 +34,10 @@ export default function AllServices() {
       <div className="p-4 border-b bg-base-100 rounded shadow">
         <div className="flex justify-between items-center">
           <h1 className="font-medium text-neutral">Services</h1>
-          <Link to="/admin/services/add-service" className="primary_btn">
+          <Link
+            to="/admin/service/services/add-service"
+            className="primary_light_btn"
+          >
             Add New Service
           </Link>
         </div>
@@ -45,8 +48,10 @@ export default function AllServices() {
           <thead>
             <tr>
               <th>Sl</th>
-              <th>Title</th>
               <th>Image</th>
+              <th>Title</th>
+              <th>Charge</th>
+              <th>Category</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -54,7 +59,6 @@ export default function AllServices() {
             {services?.map((service, i) => (
               <tr key={service?._id}>
                 <td>{i + 1}</td>
-                <td>{service?.title}</td>
                 <td>
                   <img
                     src={`${import.meta.env.VITE_BACKEND_URL}/services/${
@@ -64,9 +68,14 @@ export default function AllServices() {
                     className="w-20 h-10"
                   />
                 </td>
+                <td>{service?.title}</td>
+                <td>{service?.charge}</td>
+                <td>{service?.category?.name}</td>
                 <td>
                   <div className="flex items-center gap-2">
-                    <Link to={`/admin/services/edit-service/${service?._id}`}>
+                    <Link
+                      to={`/admin/service/services/edit-service/${service?._id}`}
+                    >
                       <FaRegEdit className="text-base hover:text-green-500 duration-200" />
                     </Link>
                     <button onClick={() => handleDeleteService(service?._id)}>

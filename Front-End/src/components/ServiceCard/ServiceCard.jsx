@@ -2,10 +2,11 @@ import "./ServiceCard.css";
 import { Link } from "react-router-dom";
 
 export default function ServiceCard({ service }) {
+  console.log(service);
   return (
     <div className="service_card">
       <Link
-        to={`service/${service?._id}`}
+        to={`/service/${service?._id}`}
         className="block h-48 overflow-hidden"
       >
         <img

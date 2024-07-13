@@ -21,23 +21,35 @@ const ServiceDetails = lazy(() =>
 const OrderCheckout = lazy(() => import("../pages/Checkout/OrderCheckout"));
 const RentCheckout = lazy(() => import("../pages/Checkout/RentCheckout"));
 
-// import AboutUs from "../pages/AboutUs/AboutUs";
-// import Contact from "../pages/Contact/Contact";
-// import Login from "../pages/Login/Login";
-// import Products from "../pages/Products/Products";
-// import ProductDetails from "../pages/Products/ProductDetails";
-// import Services from "../pages/Services/Services";
-// import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
+//-----------------------------------------------------------------------------------------------------
+// Dashboard
+//-----------------------------------------------------------------------------------------------------
 
-// import OrderCheckout from "../pages/Checkout/OrderCheckout";
-// import RentCheckout from "../pages/Checkout/RentCheckout";
-
-//------------------------------------------Dashboard---------------------------------------------------------------//
 import DashboardLayout from "../Layout/DashboardLAyout";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard/Dashboard"));
-// import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
+
+//------------------------Service
+const ServiceCategories = lazy(() =>
+  import("../pages/Dashboard/Service/Categories/ServiceCategories")
+);
+const AddCategory = lazy(() =>
+  import("../pages/Dashboard/Service/Categories/AddCategory")
+);
+const EditCategory = lazy(() =>
+  import("../pages/Dashboard/Service/Categories/EditCategory")
+);
+
+const AllServices = lazy(() =>
+  import("../pages/Dashboard/Service/Services/AllServices")
+);
+const AddService = lazy(() =>
+  import("../pages/Dashboard/Service/Services/AddService")
+);
+const EditService = lazy(() =>
+  import("../pages/Dashboard/Service/Services/EditService")
+);
 
 //-----------Category
 const Categories = lazy(() =>
@@ -49,9 +61,6 @@ const AddCategories = lazy(() =>
 const EditCategories = lazy(() =>
   import("../pages/Dashboard/Categories/EditCategories")
 );
-// import AddCategories from "../pages/Dashboard/Categories/AddCategories";
-// import Categories from "../pages/Dashboard/Categories/Categories";
-// import EditCategories from "../pages/Dashboard/Categories/EditCategories";
 
 // Sub Category
 const SubCategories = lazy(() =>
@@ -63,9 +72,6 @@ const AddSubCategories = lazy(() =>
 const EditSubCategories = lazy(() =>
   import("../pages/Dashboard/SubCategories/EditSubCategories")
 );
-// import AddSubCategories from "../pages/Dashboard/SubCategories/AddSubCategories";
-// import EditSubCategories from "../pages/Dashboard/SubCategories/EditSubCategories";
-// import SubCategories from "../pages/Dashboard/SubCategories/SubCategories";
 
 // Sub Sub Category
 const SubSubCategories = lazy(() =>
@@ -77,9 +83,6 @@ const AddSubSubCategory = lazy(() =>
 const EditSubSubCategory = lazy(() =>
   import("../pages/Dashboard/SubSubCategories/EditSubSubCategory")
 );
-// import AddSubSubCategory from "../pages/Dashboard/SubSubCategories/AddSubSubCategory";
-// import EditSubSubCategory from "../pages/Dashboard/SubSubCategories/EditSubSubCategory";
-// import SubSubCategories from "../pages/Dashboard/SubSubCategories/SubSubCategories";
 
 //--------------Product
 const ProductsList = lazy(() =>
@@ -89,14 +92,9 @@ const AddProduct = lazy(() => import("../pages/Dashboard/Product/AddProduct"));
 const EditProduct = lazy(() =>
   import("../pages/Dashboard/Product/EditProduct")
 );
-// import AddProduct from "../pages/Dashboard/Product/AddProduct";
-// import EditProduct from "../pages/Dashboard/Product/EditProduct";
-// import ProductsList from "../pages/Dashboard/Product/ProductsList";
 
 const About = lazy(() => import("../pages/Dashboard/AboutUs/AboutUs"));
-// import About from "../pages/Dashboard/AboutUs/AboutUs";
 const ContactUs = lazy(() => import("../pages/Dashboard/ContactUs/ContactUs"));
-// import ContactUs from "../pages/Dashboard/ContactUs/ContactUs";
 
 // --------Admin
 const Administrator = lazy(() =>
@@ -105,8 +103,6 @@ const Administrator = lazy(() =>
 const AddAdministrator = lazy(() =>
   import("../pages/Dashboard/Administrator/AddAdministrator")
 );
-// import AddAdministrator from "../pages/Dashboard/Administrator/AddAdministrator";
-// import Administrator from "../pages/Dashboard/Administrator/Administrator";
 
 //---------------Front-End
 const Logo = lazy(() => import("../pages/Dashboard/Logo/Logo"));
@@ -116,33 +112,14 @@ const Themes = lazy(() => import("../pages/Dashboard/Theme/Themes"));
 const Banners = lazy(() => import("../pages/Dashboard/Banner/Banner"));
 const AddBanner = lazy(() => import("../pages/Dashboard/Banner/AddBanner"));
 
-// import AddBanner from "../pages/Dashboard/Banner/AddBanner";
-// import Banners from "../pages/Dashboard/Banner/Banner";
-
-// import Logo from "../pages/Dashboard/Logo/Logo";
-// import Favicon from "../pages/Dashboard/Favicon/Favicon";
-// import Themes from "../pages/Dashboard/Theme/Themes";
-
-// Service
-const AllServices = lazy(() =>
-  import("../pages/Dashboard/Services/AllServices")
+const HomeServices = lazy(() =>
+  import("../pages/Dashboard/FrontEndSetting/Service/HomeServices")
 );
-const AddService = lazy(() => import("../pages/Dashboard/Services/AddService"));
-const EditService = lazy(() =>
-  import("../pages/Dashboard/Services/EditService")
-);
-
-// import AllServices from "../pages/Dashboard/Services/AllServices";
-// import AddService from "../pages/Dashboard/Services/AddService";
-// import EditService from "../pages/Dashboard/Services/EditService";
 
 //-------------Order
 const Orders = lazy(() => import("../pages/Dashboard/Orders/Orders"));
 
-// import Orders from "../pages/Dashboard/Orders/Orders";
-
 const Rents = lazy(() => import("../pages/Dashboard/Rents/Rents"));
-// import Rents from "../pages/Dashboard/Rents/Rents";
 
 //----------------General
 const Counter = lazy(() => import("../pages/Dashboard/Counter/Counter"));
@@ -153,12 +130,7 @@ const OthersServices = lazy(() =>
   import("../pages/Dashboard/GeneralSetting/OthersServices/OthersServices")
 );
 
-// import Counter from "../pages/Dashboard/Counter/Counter";
-// import BusinessInfo from "../pages/Dashboard/GeneralSetting/BusinessInfo/BusinessInfo";
-// import OthersServices from "../pages/Dashboard/GeneralSetting/OthersServices/OthersServices";
-
 const SEO = lazy(() => import("../pages/Dashboard/SEO/SEO"));
-// import SEO from "../pages/Dashboard/SEO/SEO";
 
 export const routes = createBrowserRouter([
   {
@@ -251,15 +223,28 @@ export const routes = createBrowserRouter([
 
       //-----------------Services
       {
-        path: "/admin/services",
+        path: "/admin/service/categories",
+        element: <ServiceCategories />,
+      },
+      {
+        path: "/admin/service/category/add",
+        element: <AddCategory />,
+      },
+      {
+        path: "/admin/service/category/edit/:id",
+        element: <EditCategory />,
+      },
+
+      {
+        path: "/admin/service/services",
         element: <AllServices />,
       },
       {
-        path: "/admin/services/add-service",
+        path: "/admin/service/services/add-service",
         element: <AddService />,
       },
       {
-        path: "/admin/services/edit-service/:id",
+        path: "/admin/service/services/edit-service/:id",
         element: <EditService />,
       },
 
@@ -341,6 +326,7 @@ export const routes = createBrowserRouter([
         element: <ContactUs />,
       },
 
+      //------------Front End Setting
       {
         path: "/admin/front-end/logo",
         element: <Logo />,
@@ -349,7 +335,6 @@ export const routes = createBrowserRouter([
         path: "/admin/front-end/favicon",
         element: <Favicon />,
       },
-
       {
         path: "/admin/front-end/banner",
         element: <Banners />,
@@ -357,6 +342,10 @@ export const routes = createBrowserRouter([
       {
         path: "/admin/front-end/banner/add-banner",
         element: <AddBanner />,
+      },
+      {
+        path: "/admin/front-end/services",
+        element: <HomeServices />,
       },
       {
         path: "/admin/front-end/themes",

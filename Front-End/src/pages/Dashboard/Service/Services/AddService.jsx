@@ -3,14 +3,17 @@ import JoditEditor from "jodit-react";
 import ReactImageUploading from "react-images-uploading";
 import { AiFillDelete } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { useAddServiceMutation } from "../../../Redux/service/service";
+import { useAddServiceMutation } from "../../../../Redux/service/service";
 import Swal from "sweetalert2";
+import { useGetServiceCategoriesQuery } from "../../../../Redux/service/serviceCategoryApi";
 
 export default function AddService() {
   const [images, setImages] = useState([]);
   const editor = useRef(null);
   const navigate = useNavigate();
   const [description, setDescription] = useState("");
+
+  const { data: categories } = useGetServiceCategoriesQuery();
 
   const [addService, { isLoading }] = useAddServiceMutation();
 
@@ -20,6 +23,7 @@ export default function AddService() {
     const title = e.target.title.value;
     const charge = e.target.charge.value;
     const short_description = e.target.short_description.value;
+    const category = e.target.category.value;
 
     if (images?.length <= 0) {
       return Swal.fire("", "Image is required", "warning");
@@ -31,6 +35,7 @@ export default function AddService() {
     formData.append("short_description", short_description);
     formData.append("description", description);
     formData.append("image", images[0].file);
+    formData.append("category", category);
 
     const res = await addService(formData).unwrap();
 
@@ -39,9 +44,13 @@ export default function AddService() {
       e.target.reset();
       setImages([]);
       setDescription("");
-      navigate("/admin/services");
+      navigate("/admin/service/services");
     } else {
-      Swal.fire("", res?.error, "error");
+      Swal.fire(
+        "",
+        `${res?.error ? res?.error : "something went wrong!"}`,
+        "error"
+      );
     }
   };
 
@@ -52,8 +61,8 @@ export default function AddService() {
       </div>
 
       <form onSubmit={handleAddService} className="p-4">
-        <div className="grid grid-cols-5 gap-6">
-          <div className="col-span-2 w-full flex flex-col gap-4">
+        <div className="grid grid-cols-5 gap-4">
+          <div className="col-span-2 w-full flex flex-col gap-2">
             <div>
               <p className="mb-1">Image</p>
               <ReactImageUploading
@@ -111,7 +120,18 @@ export default function AddService() {
 
             <div>
               <p className="mb-1">Short Description</p>
-              <textarea name="short_description" rows="5" required></textarea>
+              <textarea name="short_description" required></textarea>
+            </div>
+
+            <div>
+              <p className="mb-1">Category</p>
+              <select name="category" required>
+                {categories?.data?.map((category) => (
+                  <option key={category?._id} value={category?._id}>
+                    {category?.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 

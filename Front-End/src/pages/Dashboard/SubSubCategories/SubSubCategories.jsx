@@ -75,7 +75,7 @@ const SubSubCategories = () => {
           <h1 className="font-medium text-neutral">Sub Sub Categories</h1>
           <Link
             to="/admin/categories/add-sub-sub-category"
-            className="secondary_btn"
+            className="primary_light_btn"
           >
             Add Sub-Sub-Category
           </Link>
