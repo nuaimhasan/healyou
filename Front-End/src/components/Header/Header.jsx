@@ -46,11 +46,7 @@ export default function Header() {
         <div className="header">
           <Link to="/">
             {isLoading ? (
-              <img
-                src="/images/logo/logo.png"
-                alt="logo"
-                className="w-36 sm:w-40 xl:w-44"
-              />
+              <h2 className="w-36 sm:w-40 xl:w-44 h-20">Logo</h2>
             ) : (
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}/logo/${
@@ -58,6 +54,7 @@ export default function Header() {
                 }`}
                 alt="logo"
                 className="w-36 sm:w-40 xl:w-44"
+                loading="lazy"
               />
             )}
           </Link>
@@ -100,10 +97,14 @@ export default function Header() {
               </li>
 
               <li>
-                <NavLink to="/about-us">About Us</NavLink>
+                <NavLink to="/blogs">Blogs</NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/about-us">About</NavLink>
               </li>
               <li>
-                <NavLink to="/contact-us">Contact Us</NavLink>
+                <NavLink to="/contact-us">Contact</NavLink>
               </li>
               <li>
                 <button

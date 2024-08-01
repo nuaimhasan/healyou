@@ -1,8 +1,8 @@
-// import { lazy } from "react";
 import { Suspense, lazy } from "react";
 
 import Banner from "../../components/HomeComponents/Banner/Banner";
 import Spinner from "../../components/Spinner/Spinner";
+import BlogsCom from "../../components/HomeComponents/BlogsCom/BlogsCom";
 
 const About = lazy(() => import("../../components/About/About"));
 const CounterArea = lazy(() =>
@@ -30,6 +30,7 @@ export default function Home() {
         <ServicesCom />
         <EmergencyServices />
         <ProductsComp />
+        <BlogsCom />
       </Suspense>
     </>
   );

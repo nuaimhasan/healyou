@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BACKEND_URL,
     prepareHeaders: async (headers) => {
-      const token = localStorage.getItem("business_jwt");
+      const token = localStorage.getItem("healyou_jwt");
       if (token) {
         headers.set("Authorization", `bearer ${token}`);
       }
@@ -15,27 +15,17 @@ export const apiSlice = createApi({
   endpoints: () => ({}),
   tagTypes: [
     "banner",
-    "impactSection",
-    "impacts",
     "logo",
-    "clientBanner",
-    "client",
     "contact",
     "product",
-    "careerBanner",
-    "careerForm",
-    "news-events",
+    "services",
     "about",
-    "company-profile",
-    "our-mission",
-    "our-vision",
-    "team",
     "category",
     "sub-category",
     "sub-sub-category",
-    "news-category",
     "admin",
     "themes",
     "favicon",
+    "blogs",
   ],
 });

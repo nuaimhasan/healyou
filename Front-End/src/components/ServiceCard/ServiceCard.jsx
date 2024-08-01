@@ -13,6 +13,7 @@ export default function ServiceCard({ service }) {
           src={`${import.meta.env.VITE_BACKEND_URL}/services/${service?.image}`}
           alt=""
           className="w-full h-full service_img duration-500"
+          loading="lazy"
         />
       </Link>
       <div className="p-4 pb-8">

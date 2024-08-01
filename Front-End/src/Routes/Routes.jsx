@@ -18,6 +18,11 @@ const ServiceDetails = lazy(() =>
   import("../pages/ServiceDetails/ServiceDetails")
 );
 
+//------------Blog
+const Blogs = lazy(() => import("../pages/Blogs/Blogs"));
+const BlogDetails = lazy(() => import("../pages/BlogDetails/BlogDetails"));
+
+//------------checkout
 const OrderCheckout = lazy(() => import("../pages/Checkout/OrderCheckout"));
 const RentCheckout = lazy(() => import("../pages/Checkout/RentCheckout"));
 
@@ -73,7 +78,7 @@ const EditSubCategories = lazy(() =>
   import("../pages/Dashboard/SubCategories/EditSubCategories")
 );
 
-// Sub Sub Category
+//----------Sub Sub Category
 const SubSubCategories = lazy(() =>
   import("../pages/Dashboard/SubSubCategories/SubSubCategories")
 );
@@ -93,6 +98,11 @@ const EditProduct = lazy(() =>
   import("../pages/Dashboard/Product/EditProduct")
 );
 
+// ------------Blog
+const AllBlogs = lazy(() => import("../pages/Dashboard/Blog/AllBlogs"));
+const AddBlog = lazy(() => import("../pages/Dashboard/Blog/AddBlog"));
+const EditBlog = lazy(() => import("../pages/Dashboard/Blog/EditBlog"));
+
 const About = lazy(() => import("../pages/Dashboard/AboutUs/AboutUs"));
 const ContactUs = lazy(() => import("../pages/Dashboard/ContactUs/ContactUs"));
 
@@ -108,6 +118,7 @@ const AddAdministrator = lazy(() =>
 const Logo = lazy(() => import("../pages/Dashboard/Logo/Logo"));
 const Favicon = lazy(() => import("../pages/Dashboard/Favicon/Favicon"));
 const Themes = lazy(() => import("../pages/Dashboard/Theme/Themes"));
+
 //---------Banner
 const Banners = lazy(() => import("../pages/Dashboard/Banner/Banner"));
 const AddBanner = lazy(() => import("../pages/Dashboard/Banner/AddBanner"));
@@ -149,6 +160,15 @@ export const routes = createBrowserRouter([
       {
         path: "/service/:id",
         element: <ServiceDetails />,
+      },
+
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetails />,
       },
 
       {
@@ -246,6 +266,20 @@ export const routes = createBrowserRouter([
       {
         path: "/admin/service/services/edit-service/:id",
         element: <EditService />,
+      },
+
+      //-----------------Blogs
+      {
+        path: "/admin/blogs",
+        element: <AllBlogs />,
+      },
+      {
+        path: "/admin/blogs/add",
+        element: <AddBlog />,
+      },
+      {
+        path: "/admin/blogs/edit/:id",
+        element: <EditBlog />,
       },
 
       //-----------------Products

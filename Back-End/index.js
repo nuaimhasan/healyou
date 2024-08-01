@@ -31,6 +31,7 @@ const otherServiceRouter = require("./routes/otherServiceRoutes");
 
 const adminRouter = require("./routes/administratorRoute");
 const seoRouter = require("./routes/seoRoutes");
+const blogRouter = require("./routes/blogRoutes");
 
 const app = express();
 app.use(cors());
@@ -69,6 +70,7 @@ app.use("/otherService", otherServiceRouter);
 
 app.use("/admins", adminRouter);
 app.use("/seo", seoRouter);
+app.use("/blogs", blogRouter);
 
 app.get("/", (req, res) => {
   res.send(`Server is Running on port ${port}`);

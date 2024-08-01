@@ -26,7 +26,7 @@ export default function Banner() {
             <img
               src={`${import.meta.env.VITE_BACKEND_URL}/banner/${item.image}`}
               alt={item.image}
-              className="w-full h-48 sm:h-96 md:h-[600px]"
+              className="w-full h-48 sm:h-96 md:h-[86vh]"
             />
           </SwiperSlide>
         ))}

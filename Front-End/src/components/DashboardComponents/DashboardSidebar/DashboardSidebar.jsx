@@ -16,6 +16,7 @@ import { FcAbout } from "react-icons/fc";
 import { FaChartLine } from "react-icons/fa";
 import { GoNumber } from "react-icons/go";
 import { IoMdSettings } from "react-icons/io";
+import { FaBloggerB } from "react-icons/fa";
 
 const adminSidebarItems = [
   {
@@ -74,6 +75,12 @@ const adminSidebarItems = [
     icon: <MdOutlineAddShoppingCart />,
     title: "Rents",
     path: "/admin/rents",
+  },
+
+  {
+    icon: <FaBloggerB />,
+    title: "blogs",
+    path: "/admin/blogs",
   },
 
   {
